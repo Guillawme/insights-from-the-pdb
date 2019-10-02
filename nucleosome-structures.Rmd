@@ -1,0 +1,140 @@
+---
+title: "Nucleosome structures"
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(message = FALSE, warning = FALSE)
+```
+
+**Last updated on `r date()`.**
+
+## How to re-use this work
+
+If you use the following figures in your own work, please cite:
+
+- Zhou K, Gaullier G & Luger K (2019) Nucleosome structure and dynamics are
+  coming of age. *Nature Structural & Molecular Biology* **26**: 3–13.
+  <https://doi.org/10.1038/s41594-018-0166-x>
+- This website: 
+
+## Nucleosome structures by year and experimental method
+
+All figures are interactive (you can zoom in, and hovering over elements will
+show more information).
+
+```{r Download and clean up data, make figure}
+# Load required packages
+library(magrittr)
+library(dplyr)
+library(purrr)
+library(jsonlite)
+library(forcats)
+library(ggplot2)
+library(plotly)
+library(here)
+
+# We need two queries: one for uppercase titles, the other for lowercase ones
+pdb_queries <- c(
+    uppercase = 'https://www.ebi.ac.uk/pdbe/search/pdb/select?q=title:*UCLEOSOM*%20AND%20status:REL&fl=pdb_id,citation_year,title,experimental_method&rows=1000000&wt=json',
+    lowercase = 'https://www.ebi.ac.uk/pdbe/search/pdb/select?q=title:*ucleosom*%20AND%20status:REL&fl=pdb_id,citation_year,title,experimental_method&rows=1000000&wt=json'
+)
+
+# The following PDB entries have the word "nucleosome in their title, but do not
+# actually contain a nucleosome, so we need to exclude them from the analysis
+non_nucleosome_structures <- c(
+    "1hst",
+    "2z2r",
+    "5x7v",
+    "3uv2",
+    "3fs3",
+    "1wg3",
+    "1nw3",
+    "5ikf",
+    "3gyw",
+    "3gyv",
+    "1ofc",
+    "2ayu",
+    "2iw5",
+    "3hfd"
+)
+
+# This is a helper pipeline to extract data
+dig_up_data <- . %>%
+    .$response %>%
+    .$docs %>%
+    as_tibble()
+
+# Query the PDB and clean up data
+pdb_data <- pdb_queries %>% 
+    map(fromJSON) %>% 
+    map(dig_up_data) %>% 
+    bind_rows() %>% 
+    distinct(pdb_id, .keep_all = TRUE) %>% 
+    filter(!(pdb_id %in% non_nucleosome_structures)) %>% 
+    mutate(experimental_method = as_factor(as.character(experimental_method)),
+           citation_year       = as.integer(citation_year))
+
+# Make figure
+nucleosome_structures_year <- ggplot(data = pdb_data) +
+    geom_bar(mapping = aes(x = citation_year, fill = experimental_method)) +
+    guides(fill = guide_legend(title = "Experimental method")) +
+    ggtitle("Nucleosome structures") +
+    xlab("Publication year") +
+    ylab("Number of PDB entries") +
+    theme_bw()
+ggplotly(nucleosome_structures_year)
+```
+
+```{r Save SVG file of bar graph, include=FALSE}
+# Save figure for download
+if (!dir.exists(here("figures"))) {
+    dir.create(here("figures"))
+}
+ggsave(filename = "nucleosome-structures-by-year.svg",
+       plot = nucleosome_structures_year,
+       device = "svg",
+       path = here("figures"))
+```
+
+[**Download figure in SVG format**](figures/nucleosome-structures-by-year.svg)
+
+## Nucleosome structures by experimental method
+
+```{r Nucleosome structures by experimental method}
+nucleosome_structures_method <- ggplot(data = pdb_data) +
+    geom_bar(mapping = aes(x = experimental_method, fill = experimental_method)) +
+    guides(fill = guide_legend(title = "Experimental method")) +
+    ggtitle("Nucleosome structures") +
+    xlab("") +
+    ylab("Number of PDB entries") +
+    theme_bw()
+ggplotly(nucleosome_structures_method)
+```
+
+```{r Save SVG file of pie chart, include=FALSE}
+# Save figure for download
+if (!dir.exists(here("figures"))) {
+    dir.create(here("figures"))
+}
+ggsave(filename = "nucleosome-structures-by-method.svg",
+       plot = nucleosome_structures_method,
+       device = "svg",
+       path = here("figures"))
+```
+
+[**Download figure in SVG format**](figures/nucleosome-structures-by-method.svg)
+
+## Dataset
+
+The bar graphs presented above are derived from the following dataset:
+
+```{r Entire dataset}
+# Format table for display
+pdb_table <- pdb_data %>% 
+    arrange(desc(citation_year)) %>% 
+    select(`PDB code` = pdb_id,
+           `Citation year` = citation_year,
+           `Experimental method` = experimental_method,
+           Title = title)
+pdb_table
+```

@@ -1,0 +1,192 @@
+---
+title: "DNA length in protein-DNA complexes"
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(message = FALSE, warning = FALSE)
+```
+
+**Last updated on `r date()`.**
+
+## How to re-use this work
+
+If you use these figures in your own work, please cite:
+
+- This website: 
+
+## Structures of protein-DNA complexes by experimental method
+
+All figures are interactive (you can zoom in, and hovering over elements will
+show more information).
+
+```{r Download and clean up data, generate summary}
+# Load required packages
+library(magrittr)
+library(jsonlite)
+library(dplyr)
+library(forcats)
+library(stringr)
+library(ggplot2)
+library(plotly)
+library(here)
+
+# Query the PDB for all DNA molecules in crystal structures of protein-DNA
+# complexes
+pdb_query <- 'https://www.ebi.ac.uk/pdbe/search/pdb/select?q=molecule_type:%22DNA%22%20AND%20assembly_composition:%22DNA/protein%20complex%22&fl=pdb_id,molecule_sequence,experimental_method&rows=1000000&wt=json'
+
+pdb_data <- pdb_query %>% 
+    fromJSON() %>% 
+    .$response %>% 
+    .$docs %>% 
+    as_tibble() %>% 
+    distinct(pdb_id, .keep_all = TRUE) %>% 
+    filter(experimental_method %in% c("X-ray diffraction",
+                                      "Electron Microscopy",
+                                      "Solution NMR")) %>% 
+    mutate(dna_length = str_length(molecule_sequence),
+           experimental_method = as_factor(as.character(experimental_method)))
+
+# Summary statistics
+protein_dna_cplx_structures <- ggplot(data = pdb_data) +
+    geom_bar(mapping = aes(x = experimental_method)) +
+    theme_bw() +
+    xlab("") +
+    ylab("Number of PDB entries") +
+    ggtitle("Structures of protein-DNA complexes")
+ggplotly(protein_dna_cplx_structures)
+```
+
+```{r Save SVG file methods, include=FALSE}
+# Save figure for download
+if (!dir.exists(here("figures"))) {
+    dir.create(here("figures"))
+}
+ggsave(filename = "protein-dna-cplx-structures.svg",
+       plot = protein_dna_cplx_structures,
+       device = "svg",
+       path = here("figures"))
+```
+
+[**Download figure in SVG format**](figures/protein-dna-cplx-structures.svg)
+
+## DNA length in crystal structures of protein-DNA complexes
+### Entire distribution
+
+```{r DNA length in crystal structures}
+dna_length_xtal <- pdb_data %>% 
+    filter(experimental_method == "X-ray diffraction") %>% 
+    ggplot() +
+    geom_histogram(mapping = aes(x = dna_length), binwidth = 1) +
+    theme_bw() +
+    ggtitle("DNA length in crystal structures of protein-DNA complexes") +
+    xlab("DNA length (bp)") +
+    ylab("Number of crystal structures")
+ggplotly(dna_length_xtal)
+```
+
+```{r Save SVG file xtal, include=FALSE}
+# Save figure for download
+if (!dir.exists(here("figures"))) {
+    dir.create(here("figures"))
+}
+ggsave(filename = "dna-length-in-protein-dna-cplx-xtal-structures.svg",
+       plot = dna_length_xtal,
+       device = "svg",
+       path = here("figures"))
+```
+
+[**Download figure in SVG format**](figures/dna-length-in-protein-dna-cplx-xtal-structures.svg)
+
+### 0-150 bp range
+
+```{r DNA length in crystal structures in 0-150 bp range}
+dna_length_xtal_150 <- pdb_data %>% 
+    filter(experimental_method == "X-ray diffraction" & dna_length < 151) %>% 
+    ggplot() +
+    geom_histogram(mapping = aes(x = dna_length), binwidth = 1) +
+    theme_bw() +
+    ggtitle("DNA length in crystal structures of protein-DNA complexes (0-150 bp)") +
+    xlab("DNA length (bp)") +
+    ylab("Number of crystal structures")
+ggplotly(dna_length_xtal_150)
+```
+
+```{r Save SVG file xtal 0-150 bp range, include=FALSE}
+# Save figure for download
+if (!dir.exists(here("figures"))) {
+    dir.create(here("figures"))
+}
+ggsave(filename = "dna-length-in-protein-dna-cplx-xtal-structures-0-150.svg",
+       plot = dna_length_xtal_150,
+       device = "svg",
+       path = here("figures"))
+```
+
+[**Download figure in SVG format**](figures/dna-length-in-protein-dna-cplx-xtal-structures-0-150.svg)
+
+## DNA length in cryo-EM structures of protein-DNA complexes
+
+```{r DNA length in cryo-EM structures}
+dna_length_cryoem <- pdb_data %>% 
+    filter(experimental_method == "Electron Microscopy") %>% 
+    ggplot() +
+    geom_histogram(mapping = aes(x = dna_length), binwidth = 1) +
+    theme_bw() +
+    ggtitle("DNA length in cryo-EM structures of protein-DNA complexes") +
+    xlab("DNA length (bp)") +
+    ylab("Number of cryo-EM structures")
+ggplotly(dna_length_cryoem)
+```
+
+```{r Save SVG file cryoem, include=FALSE}
+# Save figure for download
+if (!dir.exists(here("figures"))) {
+    dir.create(here("figures"))
+}
+ggsave(filename = "dna-length-in-protein-dna-cplx-cryoem-structures.svg",
+       plot = dna_length_cryoem,
+       device = "svg",
+       path = here("figures"))
+```
+
+[**Download figure in SVG format**](figures/dna-length-in-protein-dna-cplx-cryoem-structures.svg)
+
+## DNA length in NMR structures of protein-DNA complexes
+
+```{r DNA length in NMR structures}
+dna_length_nmr <- pdb_data %>% 
+    filter(experimental_method == "Solution NMR") %>% 
+    ggplot() +
+    geom_histogram(mapping = aes(x = dna_length), binwidth = 1) +
+    theme_bw() +
+    ggtitle("DNA length in NMR structures of protein-DNA complexes") +
+    xlab("DNA length (bp)") +
+    ylab("Number of NMR structures")
+ggplotly(dna_length_nmr)
+```
+
+```{r Save SVG file nmr, include=FALSE}
+# Save figure for download
+if (!dir.exists(here("figures"))) {
+    dir.create(here("figures"))
+}
+ggsave(filename = "dna-length-in-protein-dna-cplx-nmr-structures.svg",
+       plot = dna_length_nmr,
+       device = "svg",
+       path = here("figures"))
+```
+
+[**Download figure in SVG format**](figures/dna-length-in-protein-dna-cplx-nmr-structures.svg)
+
+## Dataset
+
+The histograms presented above are derived from the following dataset:
+
+```{r Entire dataset}
+# Format table for display
+pdb_table <- pdb_data %>% 
+    arrange(desc(dna_length)) %>% 
+    select(`PDB code` = pdb_id,
+           `DNA length` = dna_length)
+pdb_table
+```

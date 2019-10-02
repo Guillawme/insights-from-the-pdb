@@ -1,0 +1,78 @@
+---
+title: "About"
+---
+
+## About the author
+
+You can learn more about me on [my personal website][about-me].
+
+## Contact
+
+You can contact me [by email][email] or [on Twitter][twitter].
+
+## Permissions
+### Figures
+
+All figures on this website are released under a [Creative Commons Attribution
+4.0 International (CC BY 4.0) license][cc-by]. You are welcome to use them in
+your own work, including with modifications, provided that you give credit to
+this original work.
+
+For figures that I made for an article published in a regular journal, giving
+credit means citing the corresponding article. On this website, I always
+indicate the full reference to the article a figure appeared in.
+
+For figures that I have not published in any article at the time you use them,
+giving credit means citing this website directly, which is citeable thanks to
+[Zenodo][zenodo]. The website's DOI is:
+
+### Code
+
+All code on this website is released under the [MIT license][mit]. This means
+you can do pretty much whatever you want with it, at your own risk, and provided
+that you give credit to the original if you redistribute it:
+
+> MIT License
+> 
+> Copyright (c) 2019 Guillaume Gaullier
+> 
+> Permission is hereby granted, free of charge, to any person obtaining a copy
+> of this software and associated documentation files (the "Software"), to deal
+> in the Software without restriction, including without limitation the rights
+> to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+> copies of the Software, and to permit persons to whom the Software is
+> furnished to do so, subject to the following conditions:
+> 
+> The above copyright notice and this permission notice shall be included in all
+> copies or substantial portions of the Software.
+> 
+> THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+> IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+> FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+> AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+> LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+> OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+> SOFTWARE.
+
+
+[about-me]: https://www.gaullier.org/en/about/
+
+[pdb]: https://en.wikipedia.org/wiki/Protein_Data_Bank
+
+[pdb-stats]: https://www.rcsb.org/stats/
+
+[pdbe]: https://www.ebi.ac.uk/pdbe
+
+[pdbe-search]: https://www.ebi.ac.uk/pdbe/api/doc/search.html
+
+[blog]: https://www.gaullier.org/en/categories/insights-from-the-pdb/
+
+[email]: mailto:contact@gaullier.org
+
+[twitter]: https://twitter.com/Guillawme
+
+[cc-by]: https://creativecommons.org/licenses/by/4.0/
+
+[zenodo]: https://zenodo.org/
+
+[mit]: https://choosealicense.com/licenses/mit

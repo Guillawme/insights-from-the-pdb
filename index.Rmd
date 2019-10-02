@@ -1,0 +1,49 @@
+---
+title: "Insights from the PDB"
+---
+
+**Last updated on `r date()`.**
+
+The [Protein Data Bank][pdb] (PDB) is a repository of experimentally determined
+three-dimensional structures of biological macromolecules (mostly proteins and
+nucleic acids). The structures it contains are very useful by themselves for
+answering biological questions, or for asking even more questions. In addition,
+the associated *metadata* (structure annotations) can also answer many
+interesting questions.
+
+The PDB already provides [statistics on some of its metadata][pdb-stats], but
+these are very general in scope. The [PDB in Europe][pdbe] (PDBe) provides
+programmatic access to the database through the [PDBe API][pdbe-search]. By
+collecting appropriate metadata from the database, one can get much finer
+insight, for example specific to a particular field of structural biology.
+
+This website presents the results of analyzing metadata from the Protein Data
+Bank to answer questions I am interested in. Some of these analyses are part of
+[a series of posts on my blog][blog]; this website consolidates the results in a
+format that is easier to keep up-to-date and consult. I will add more analyses
+as I find the need. Each analysis indicates the date when it was last run, and I
+will try to update the entire site about once a month. If you notice it is out
+of date, feel free to [contact me][contact] and I will update it.
+
+You are free to use all figures and code used to generate them, [provided you
+give credit appropriately][permissions].
+
+## Currently available analyses
+
+- [Nucleosome structures](nucleosome-structures.html)
+- [DNA length in protein-DNA complexes](dna-length-in-protein-dna-complexes.html)
+
+
+[pdb]: https://en.wikipedia.org/wiki/Protein_Data_Bank
+
+[pdb-stats]: https://www.rcsb.org/stats/
+
+[pdbe]: https://www.ebi.ac.uk/pdbe
+
+[pdbe-search]: https://www.ebi.ac.uk/pdbe/api/doc/search.html
+
+[blog]: https://www.gaullier.org/en/categories/insights-from-the-pdb/
+
+[contact]: about.html#contact
+
+[permissions]: about.html#permissions

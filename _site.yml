@@ -1,0 +1,29 @@
+name: "insights-from-the-pdb"
+new_session: true
+output_dir: docs
+exclude: ["LICENSE", "CC-BY-4.0.txt", "README.md"]
+output:
+  html_document:
+    toc: true
+    toc_float:
+      collapsed: false
+      smooth_scroll: true
+    theme: simplex
+    highlight: tango
+    df_print: paged
+    code_folding: hide
+    code_download: true
+navbar:
+  title: "Insights from the PDB"
+  left:
+    - text: "Home"
+      href: index.html
+    - text: "About"
+      href: about.html
+    - text: "Nucleosome structures"
+      href: nucleosome-structures.html
+    - text: "DNA length in protein-DNA complexes"
+      href: dna-length-in-protein-dna-complexes.html
+  right:
+    - text: "GitHub repository"
+      href: https://github.com/Guillawme/insights-from-the-pdb
