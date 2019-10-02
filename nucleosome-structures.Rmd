@@ -15,7 +15,7 @@ If you use the following figures in your own work, please cite:
 - Zhou K, Gaullier G & Luger K (2019) Nucleosome structure and dynamics are
   coming of age. *Nature Structural & Molecular Biology* **26**: 3–13.
   <https://doi.org/10.1038/s41594-018-0166-x>
-- This website: 
+- This website: <https://doi.org/10.5281/zenodo.3470119>
 
 ## Nucleosome structures by year and experimental method
 

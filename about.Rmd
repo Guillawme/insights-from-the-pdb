@@ -24,7 +24,7 @@ indicate the full reference to the article a figure appeared in.
 
 For figures that I have not published in any article at the time you use them,
 giving credit means citing this website directly, which is citeable thanks to
-[Zenodo][zenodo]. The website's DOI is:
+[Zenodo][zenodo]. The website's DOI is: <https://doi.org/10.5281/zenodo.3470119>.
 
 ### Code
 

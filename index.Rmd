@@ -2,6 +2,8 @@
 title: "Insights from the PDB"
 ---
 
+[![DOI badge][doi-badge]][doi-link]
+
 **Last updated on `r date()`.**
 
 The [Protein Data Bank][pdb] (PDB) is a repository of experimentally determined
@@ -33,6 +35,10 @@ give credit appropriately][permissions].
 - [Nucleosome structures](nucleosome-structures.html)
 - [DNA length in protein-DNA complexes](dna-length-in-protein-dna-complexes.html)
 
+
+[doi-badge]: https://zenodo.org/badge/doi/10.5281/zenodo.3470119.svg
+
+[doi-link]: https://doi.org/10.5281/zenodo.3470119
 
 [pdb]: https://en.wikipedia.org/wiki/Protein_Data_Bank
 
