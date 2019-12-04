@@ -5,7 +5,6 @@
 <head>
 
 <meta charset="utf-8" />
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="generator" content="pandoc" />
 <meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
 
@@ -225,6 +224,7 @@ $(document).ready(function () {
   border: none;
   display: inline-block;
   border-radius: 4px;
+  background-color: transparent;
 }
 
 .tabset-dropdown > .nav-tabs.nav-tabs-open > li {
@@ -256,6 +256,12 @@ $(document).ready(function () {
 }
 }
 
+@media print {
+.toc-content {
+  /* see https://github.com/w3c/csswg-drafts/issues/4434 */
+  float: right;
+}
+}
 
 .toc-content {
   padding-left: 30px;
@@ -382,7 +388,7 @@ div.tocify {
 
 
 <p><a href="https://doi.org/10.5281/zenodo.3470119"><img src="https://zenodo.org/badge/doi/10.5281/zenodo.3470119.svg" alt="DOI badge" /></a></p>
-<p><strong>Last updated on Fri Oct 25 13:58:38 2019.</strong></p>
+<p><strong>Last updated on Wed Dec 4 12:22:26 2019.</strong></p>
 <p>The <a href="https://en.wikipedia.org/wiki/Protein_Data_Bank">Protein Data Bank</a> (PDB) is a repository of experimentally determined three-dimensional structures of biological macromolecules (mostly proteins and nucleic acids). The structures it contains are very useful by themselves for answering biological questions, or for asking even more questions. In addition, the associated <em>metadata</em> (structure annotations) can also answer many interesting questions.</p>
 <p>The PDB already provides <a href="https://www.rcsb.org/stats/">statistics on some of its metadata</a>, but these are very general in scope. The <a href="https://www.ebi.ac.uk/pdbe">PDB in Europe</a> (PDBe) provides programmatic access to the database through the <a href="https://www.ebi.ac.uk/pdbe/api/doc/search.html">PDBe API</a>. By collecting appropriate metadata from the database, one can get much finer insight, for example specific to a particular field of structural biology.</p>
 <p>This website presents the results of analyzing metadata from the Protein Data Bank to answer questions I am interested in. Some of these analyses are part of <a href="https://www.gaullier.org/en/categories/insights-from-the-pdb/">a series of posts on my blog</a>; this website consolidates the results in a format that is easier to keep up-to-date and consult. I will add more analyses as I find the need. Each analysis indicates the date when it was last run, and I will try to update the entire site about once a month. If you notice it is out of date, feel free to <a href="about.html#contact">contact me</a> and I will update it.</p>

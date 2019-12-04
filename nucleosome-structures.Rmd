@@ -36,8 +36,8 @@ library(stringr)
 
 # We need two queries: one for uppercase titles, the other for lowercase ones
 pdb_queries <- c(
-    uppercase = 'https://www.ebi.ac.uk/pdbe/search/pdb/select?q=title:*UCLEOSOM*%20AND%20status:REL&fl=pdb_id,citation_year,title,experimental_method,organism_scientific_name,molecule_name&rows=1000000&wt=json',
-    lowercase = 'https://www.ebi.ac.uk/pdbe/search/pdb/select?q=title:*ucleosom*%20AND%20status:REL&fl=pdb_id,citation_year,title,experimental_method,organism_scientific_name,molecule_name&rows=1000000&wt=json'
+    uppercase = 'https://www.ebi.ac.uk/pdbe/search/pdb/select?q=title:*UCLEOSOM*%20AND%20status:REL&fl=pdb_id,citation_year,title,experimental_method,resolution,organism_scientific_name,molecule_name&rows=1000000&wt=json',
+    lowercase = 'https://www.ebi.ac.uk/pdbe/search/pdb/select?q=title:*ucleosom*%20AND%20status:REL&fl=pdb_id,citation_year,title,experimental_method,resolution,organism_scientific_name,molecule_name&rows=1000000&wt=json'
 )
 
 # The following PDB entries have the word "nucleosome in their title, but do not
@@ -56,7 +56,8 @@ non_nucleosome_structures <- c(
     "1ofc",
     "2ayu",
     "2iw5",
-    "3hfd"
+    "3hfd",
+    "6uch"
 )
 
 # This is a helper pipeline to extract data
@@ -198,9 +199,82 @@ ggsave(filename = "nucleosome-cryoem-structures-by-histone-species.svg",
 
 [**Download figure in SVG format**](figures/nucleosome-cryoem-structures-by-histone-species.svg)
 
+## Resolution of nucleosome structures by histone species
+### Crystal structures
+
+```{r Resolution of nucleosome crystal structures by histone species}
+pdb_data %>% dplyr::filter(experimental_method == "X-ray diffraction") %>% .$resolution %>% summary()
+
+nucleosome_xtal_resolution_species <- pdb_data %>% 
+    filter(experimental_method == "X-ray diffraction") %>% 
+    mutate(is_histone = str_detect(molecule_name, pattern = "Histone H")) %>% 
+    filter(is_histone == TRUE) %>% 
+    distinct(pdb_id, .keep_all = TRUE) %>% 
+    mutate(organism_scientific_name = as_factor(as.character(organism_scientific_name))) %>% 
+    select(resolution, organism_scientific_name) %>% 
+    ggplot() +
+    geom_histogram(aes(x = resolution, fill = organism_scientific_name),
+                   binwidth = 0.2) +
+    guides(fill = guide_legend(title = "Histone species")) +
+    ggtitle("Resolution of nucleosome crystal structures by histone species") +
+    xlab("Resolution (Å)") +
+    ylab("Number of PDB entries") +
+    theme_bw()
+ggplotly(nucleosome_xtal_resolution_species)
+```
+
+```{r Save SVG file of xtal-resolution-species graph, include=FALSE}
+# Save figure for download
+if (!dir.exists(here("figures"))) {
+    dir.create(here("figures"))
+}
+ggsave(filename = "nucleosome-xtal-resolution-by-histone-species.svg",
+       plot = nucleosome_xtal_resolution_species,
+       device = "svg",
+       path = here("figures"))
+```
+
+[**Download figure in SVG format**](figures/nucleosome-xtal-resolution-by-histone-species.svg)
+
+### Cryo-EM structures
+
+```{r Resolution of nucleosome cryo-EM structures by histone species}
+pdb_data %>% dplyr::filter(experimental_method == "Electron Microscopy") %>% .$resolution %>% summary()
+
+nucleosome_cryoem_resolution_species <- pdb_data %>% 
+    filter(experimental_method == "Electron Microscopy") %>% 
+    mutate(is_histone = str_detect(molecule_name, pattern = "Histone H")) %>% 
+    filter(is_histone == TRUE) %>% 
+    distinct(pdb_id, .keep_all = TRUE) %>% 
+    mutate(organism_scientific_name = as_factor(as.character(organism_scientific_name))) %>% 
+    select(resolution, organism_scientific_name) %>% 
+    ggplot() +
+    geom_histogram(aes(x = resolution, fill = organism_scientific_name),
+                   binwidth = 0.2) +
+    guides(fill = guide_legend(title = "Histone species")) +
+    ggtitle("Resolution of nucleosome cryo-EM structures by histone species") +
+    xlab("Resolution (Å)") +
+    ylab("Number of PDB entries") +
+    theme_bw()
+ggplotly(nucleosome_cryoem_resolution_species)
+```
+
+```{r Save SVG file of cryoem-resolution-species graph, include=FALSE}
+# Save figure for download
+if (!dir.exists(here("figures"))) {
+    dir.create(here("figures"))
+}
+ggsave(filename = "nucleosome-cryoem-resolution-by-histone-species.svg",
+       plot = nucleosome_cryoem_resolution_species,
+       device = "svg",
+       path = here("figures"))
+```
+
+[**Download figure in SVG format**](figures/nucleosome-cryoem-resolution-by-histone-species.svg)
+
 ## Dataset
 
-The bar graphs presented above are derived from the following dataset:
+The graphs presented above are derived from the following dataset:
 
 ```{r Entire dataset}
 # Format table for display
@@ -213,3 +287,14 @@ pdb_table <- pdb_data %>%
            Title = title)
 pdb_table
 ```
+
+```{r Save dataset as JSON, include=FALSE}
+# Save dataset for download
+if (!dir.exists(here("datasets"))) {
+    dir.create(here("datasets"))
+}
+
+write_json(pdb_data, here("datasets", "nucleosome-structures.json"))
+```
+
+[**Download raw dataset in JSON format**](datasets/nucleosome-structures.json)

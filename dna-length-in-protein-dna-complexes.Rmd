@@ -188,3 +188,15 @@ pdb_table <- pdb_data %>%
            `DNA length` = dna_length)
 pdb_table
 ```
+
+
+```{r Save dataset as JSON, include=FALSE}
+# Save dataset for download
+if (!dir.exists(here("datasets"))) {
+    dir.create(here("datasets"))
+}
+
+write_json(pdb_data, here("datasets", "protein-dna-cplx-structures.json"))
+```
+
+[**Download raw dataset in JSON format**](datasets/protein-dna-cplx-structures.json)
