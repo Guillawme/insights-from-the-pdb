@@ -1,0 +1,174 @@
+---
+title: "Free DNA length in the PDB"
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(message = FALSE, warning = FALSE)
+```
+
+**Last updated on `r date()`.**
+
+## How to re-use this work
+
+If you use these figures in your own work, please cite this website: <https://doi.org/10.5281/zenodo.3470119>
+
+## Structures of free DNA by experimental method
+
+All figures are interactive (you can zoom in, and hovering over elements will
+show more information).
+
+```{r Download and clean up data, generate summary}
+# Load required packages
+library(magrittr)
+library(jsonlite)
+library(dplyr)
+library(forcats)
+library(stringr)
+library(ggplot2)
+library(plotly)
+library(here)
+
+# Query the PDB for all DNA molecules in structures of free-DNA
+pdb_query <- 'https://www.ebi.ac.uk/pdbe/search/pdb/select?q=molecule_type:%22DNA%22%20AND%20assembly_composition:%22DNA%20structure%22&fl=pdb_id,molecule_sequence,experimental_method&rows=1000000&wt=json'
+
+
+pdb_data <- pdb_query %>% 
+    fromJSON() %>% 
+    .$response %>% 
+    .$docs %>% 
+    as_tibble() %>% 
+    distinct(pdb_id, .keep_all = TRUE) %>% 
+    filter(experimental_method %in% c("X-ray diffraction",
+                                      "Electron Microscopy",
+                                      "Solution NMR")) %>% 
+    mutate(dna_length = str_length(molecule_sequence),
+           experimental_method = as_factor(as.character(experimental_method)))
+
+# Summary statistics
+free_dna_structures <- ggplot(data = pdb_data) +
+    geom_bar(mapping = aes(x = experimental_method)) +
+    theme_bw() +
+    xlab("") +
+    ylab("Number of PDB entries") +
+    ggtitle("Structures of free DNA by experimental method")
+ggplotly(free_dna_structures)
+```
+
+```{r Save SVG file methods, include=FALSE}
+# Save figure for download
+if (!dir.exists(here("figures"))) {
+    dir.create(here("figures"))
+}
+ggsave(filename = "free-dna-structures.svg",
+       plot = free_dna_structures,
+       device = "svg",
+       path = here("figures"))
+```
+
+[**Download figure in SVG format**](figures/free-dna-structures.svg)
+
+## DNA length in crystal structures of free DNA
+
+```{r DNA length in crystal structures}
+free_dna_length_xtal <- pdb_data %>% 
+    filter(experimental_method == "X-ray diffraction") %>% 
+    ggplot() +
+    geom_histogram(mapping = aes(x = dna_length), binwidth = 1) +
+    theme_bw() +
+    ggtitle("DNA length in crystal structures of free DNA") +
+    xlab("DNA length (bp)") +
+    ylab("Number of crystal structures")
+ggplotly(free_dna_length_xtal)
+```
+
+```{r Save SVG file xtal, include=FALSE}
+# Save figure for download
+if (!dir.exists(here("figures"))) {
+    dir.create(here("figures"))
+}
+ggsave(filename = "dna-length-in-free-dna-xtal-structures.svg",
+       plot = free_dna_length_xtal,
+       device = "svg",
+       path = here("figures"))
+```
+
+[**Download figure in SVG format**](figures/dna-length-in-free-dna-xtal-structures.svg)
+
+## DNA length in cryo-EM structures of free DNA
+
+```{r DNA length in cryo-EM structures}
+free_dna_length_cryoem <- pdb_data %>% 
+    filter(experimental_method == "Electron Microscopy") %>% 
+    ggplot() +
+    geom_histogram(mapping = aes(x = dna_length), binwidth = 1) +
+    theme_bw() +
+    ggtitle("DNA length in cryo-EM structures of free DNA") +
+    xlab("DNA length (bp)") +
+    ylab("Number of cryo-EM structures")
+ggplotly(free_dna_length_cryoem)
+```
+
+```{r Save SVG file cryoem, include=FALSE}
+# Save figure for download
+if (!dir.exists(here("figures"))) {
+    dir.create(here("figures"))
+}
+ggsave(filename = "dna-length-in-free-dna-cryoem-structures.svg",
+       plot = free_dna_length_cryoem,
+       device = "svg",
+       path = here("figures"))
+```
+
+[**Download figure in SVG format**](figures/dna-length-in-free-dna-cryoem-structures.svg)
+
+## DNA length in NMR structures of free DNA
+
+```{r DNA length in NMR structures}
+free_dna_length_nmr <- pdb_data %>% 
+    filter(experimental_method == "Solution NMR") %>% 
+    ggplot() +
+    geom_histogram(mapping = aes(x = dna_length), binwidth = 1) +
+    theme_bw() +
+    ggtitle("DNA length in NMR structures of free DNA") +
+    xlab("DNA length (bp)") +
+    ylab("Number of NMR structures")
+ggplotly(free_dna_length_nmr)
+```
+
+```{r Save SVG file nmr, include=FALSE}
+# Save figure for download
+if (!dir.exists(here("figures"))) {
+    dir.create(here("figures"))
+}
+ggsave(filename = "dna-length-in-free-dna-nmr-structures.svg",
+       plot = free_dna_length_nmr,
+       device = "svg",
+       path = here("figures"))
+```
+
+[**Download figure in SVG format**](figures/dna-length-in-free-dna-nmr-structures.svg)
+
+## Dataset
+
+The histograms presented above are derived from the following dataset:
+
+```{r Entire dataset}
+# Format table for display
+pdb_table <- pdb_data %>% 
+    arrange(desc(dna_length)) %>% 
+    select(`PDB code` = pdb_id,
+           `DNA length` = dna_length)
+pdb_table
+```
+
+
+```{r Save dataset as JSON, include=FALSE}
+# Save dataset for download
+if (!dir.exists(here("datasets"))) {
+    dir.create(here("datasets"))
+}
+
+write_json(pdb_data, here("datasets", "free-dna-structures.json"))
+```
+
+[**Download raw dataset in JSON format**](datasets/free-dna-structures.json)

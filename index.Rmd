@@ -34,6 +34,7 @@ give credit appropriately][permissions].
 
 - [Nucleosome structures](nucleosome-structures.html)
 - [DNA length in protein-DNA complexes](dna-length-in-protein-dna-complexes.html)
+- [DNA length in structures of free DNA](free-dna.html)
 
 
 [doi-badge]: https://zenodo.org/badge/doi/10.5281/zenodo.3470119.svg

@@ -24,6 +24,8 @@ navbar:
       href: nucleosome-structures.html
     - text: "DNA length in protein-DNA complexes"
       href: dna-length-in-protein-dna-complexes.html
+    - text: "Free DNA"
+      href: free-dna.html
   right:
     - text: "GitHub repository"
       href: https://github.com/Guillawme/insights-from-the-pdb
