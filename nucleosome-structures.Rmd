@@ -17,12 +17,7 @@ If you use the following figures in your own work, please cite:
   <https://doi.org/10.1038/s41594-018-0166-x>
 - This website: <https://doi.org/10.5281/zenodo.3470119>
 
-## Nucleosome structures by year
-
-All figures are interactive (you can zoom in, and hovering over elements will
-show more information).
-
-```{r Download and clean up data, make figure}
+```{r Load packages, download data and prepare dataset}
 # Load required packages
 library(magrittr)
 library(dplyr)
@@ -36,8 +31,8 @@ library(stringr)
 
 # We need two queries: one for uppercase titles, the other for lowercase ones
 pdb_queries <- c(
-    uppercase = 'https://www.ebi.ac.uk/pdbe/search/pdb/select?q=title:*UCLEOSOM*%20AND%20status:REL&fl=pdb_id,citation_year,title,experimental_method,resolution,organism_scientific_name,molecule_name&rows=1000000&wt=json',
-    lowercase = 'https://www.ebi.ac.uk/pdbe/search/pdb/select?q=title:*ucleosom*%20AND%20status:REL&fl=pdb_id,citation_year,title,experimental_method,resolution,organism_scientific_name,molecule_name&rows=1000000&wt=json'
+    uppercase = 'https://www.ebi.ac.uk/pdbe/search/pdb/select?q=title:*UCLEOSOM*%20AND%20status:REL&fl=pdb_id,citation_year,title,experimental_method,resolution,organism_scientific_name,molecule_name,molecule_type,number_of_protein_chains&rows=1000000&wt=json',
+    lowercase = 'https://www.ebi.ac.uk/pdbe/search/pdb/select?q=title:*ucleosom*%20AND%20status:REL&fl=pdb_id,citation_year,title,experimental_method,resolution,organism_scientific_name,molecule_name,molecule_type,number_of_protein_chains&rows=1000000&wt=json'
 )
 
 # The following PDB entries have the word "nucleosome in their title, but do not
@@ -76,19 +71,54 @@ dig_up_data <- . %>%
     .$docs %>%
     as_tibble()
 
+# This is a helper function to detect the presence of a binding factor
+has_binding_factor_one <- function(number_of_protein_chains, title) {
+    # It takes 8 histone chains to make a nucleosome, so if the number of
+    # protein chains is not divisible by 8, this means there is a binding factor
+    if (number_of_protein_chains %% 8 != 0) {
+        return(TRUE)
+    } else {
+        # But for multiple of 8 chains > 8 (i.e. 16, 24, 32, 40), we can have this
+        # number of chains by chance even with binding factors. There is no good
+        # way to automatically find these cases, unfortunately
+        compass <- str_detect(title, "COMPASS")
+        binding_factor <- compass
+        if (binding_factor) {
+            return(TRUE)
+        } else {
+            return(FALSE)
+        }
+    }
+}
+
+# Vectorize the above function
+has_binding_factor <- function(number_of_protein_chains_vector, title) {
+    map2_lgl(number_of_protein_chains_vector, title, has_binding_factor_one)
+}
+
 # Query the PDB and clean up data
 pdb_data <- pdb_queries %>% 
     map(fromJSON) %>% 
     map(dig_up_data) %>% 
     bind_rows() %>% 
     filter(!(pdb_id %in% non_nucleosome_structures)) %>% 
-    mutate(experimental_method      = as_factor(as.character(experimental_method)),
-           citation_year            = as.integer(citation_year),
-           molecule_name            = as.character(molecule_name))
+    mutate(
+      has_binding_factor    = has_binding_factor(number_of_protein_chains, title),
+      experimental_method   = as_factor(as.character(experimental_method)),
+      citation_year         = as.integer(citation_year),
+      molecule_name         = as.character(molecule_name),
+      molecule_type         = as_factor(as.character(molecule_type))
+      ) %>% 
+    distinct(pdb_id, .keep_all = TRUE)
+```
 
-# Make figure
+## Nucleosome structures by year
+
+All figures are interactive (you can zoom in, and hovering over elements will
+show more information).
+
+```{r Nucleosome structures by year}
 nucleosome_structures_year <- pdb_data %>% 
-    distinct(pdb_id, .keep_all = TRUE) %>% 
     ggplot() +
     geom_bar(mapping = aes(x = citation_year, fill = experimental_method)) +
     guides(fill = guide_legend(title = "Experimental method")) +
@@ -116,7 +146,6 @@ ggsave(filename = "nucleosome-structures-by-year.svg",
 
 ```{r Nucleosome structures by experimental method}
 nucleosome_structures_method <- pdb_data %>% 
-    distinct(pdb_id, .keep_all = TRUE) %>% 
     ggplot() +
     geom_bar(mapping = aes(x = experimental_method, fill = experimental_method)) +
     guides(fill = guide_legend(title = "Experimental method")) +
@@ -140,6 +169,83 @@ ggsave(filename = "nucleosome-structures-by-method.svg",
 
 [**Download figure in SVG format**](figures/nucleosome-structures-by-method.svg)
 
+## Nucleosome structures by presence of a binding factor
+
+```{r Nucleosome structures by presence of a binding factor and method}
+nucleosome_binding_factors_methods <- pdb_data %>% 
+    ggplot() +
+    geom_bar(mapping = aes(x = experimental_method, fill = has_binding_factor)) +
+    guides(fill = guide_legend(title = "Presence of a binding factor")) +
+    ggtitle("Structures of nucleosomes by presence of a binding factor") +
+    xlab("Experimental method") +
+    ylab("Number of PDB entries") +
+    theme_bw()
+ggplotly(nucleosome_binding_factors_methods)
+```
+
+```{r Save SVG file of binding factors and methods graph, include=FALSE}
+# Save figure for download
+if (!dir.exists(here("figures"))) {
+    dir.create(here("figures"))
+}
+ggsave(filename = "nucleosome-binding-factors-methods.svg",
+       plot = nucleosome_binding_factors_methods,
+       device = "svg",
+       path = here("figures"))
+```
+
+[**Download figure in SVG format**](figures/nucleosome-binding-factors-methods.svg)
+
+```{r Nucleosome structures by presence of a binding factor}
+nucleosome_binding_factors <- pdb_data %>% 
+    ggplot() +
+    geom_bar(mapping = aes(x = has_binding_factor, fill = has_binding_factor)) +
+    guides(fill = guide_legend(title = "Presence of a binding factor")) +
+    ggtitle("Structures of nucleosomes by presence of a binding factor") +
+    xlab("Presence of a binding factor") +
+    ylab("Number of PDB entries") +
+    theme_bw()
+ggplotly(nucleosome_binding_factors)
+```
+
+```{r Save SVG file of binding factors graph, include=FALSE}
+# Save figure for download
+if (!dir.exists(here("figures"))) {
+    dir.create(here("figures"))
+}
+ggsave(filename = "nucleosome-binding-factors.svg",
+       plot = nucleosome_binding_factors,
+       device = "svg",
+       path = here("figures"))
+```
+
+[**Download figure in SVG format**](figures/nucleosome-binding-factors.svg)
+
+```{r Nucleosome structures by presence of a binding factor and method 2}
+nucleosome_binding_factors_methods_2 <- pdb_data %>% 
+    ggplot() +
+    geom_bar(mapping = aes(x = has_binding_factor, fill = experimental_method)) +
+    guides(fill = guide_legend(title = "Experimental method")) +
+    ggtitle("Structures of nucleosomes by presence of a binding factor") +
+    xlab("Presence of a binding factor") +
+    ylab("Number of PDB entries") +
+    theme_bw()
+ggplotly(nucleosome_binding_factors_methods_2)
+```
+
+```{r Save SVG file of binding factors methods 2 graph, include=FALSE}
+# Save figure for download
+if (!dir.exists(here("figures"))) {
+    dir.create(here("figures"))
+}
+ggsave(filename = "nucleosome-binding-factors-methods-2.svg",
+       plot = nucleosome_binding_factors_methods_2,
+       device = "svg",
+       path = here("figures"))
+```
+
+[**Download figure in SVG format**](figures/nucleosome-binding-factors-methods-2.svg)
+
 ## Nucleosome structures by histone species
 ### Crystal structures of nucleosomes by histone species
 
@@ -148,7 +254,6 @@ nucleosome_xtal_species <- pdb_data %>%
     filter(experimental_method == "X-ray diffraction") %>% 
     mutate(is_histone = str_detect(molecule_name, pattern = "Histone H")) %>% 
     filter(is_histone == TRUE) %>% 
-    distinct(pdb_id, .keep_all = TRUE) %>% 
     mutate(organism_scientific_name = as_factor(as.character(organism_scientific_name))) %>% 
     ggplot() +
     geom_bar(mapping = aes(x = organism_scientific_name,
@@ -182,7 +287,6 @@ nucleosome_cryoem_species <- pdb_data %>%
     filter(experimental_method == "Electron Microscopy") %>% 
     mutate(is_histone = str_detect(molecule_name, pattern = "Histone H")) %>% 
     filter(is_histone == TRUE) %>% 
-    distinct(pdb_id, .keep_all = TRUE) %>% 
     mutate(organism_scientific_name = as_factor(as.character(organism_scientific_name))) %>% 
     ggplot() +
     geom_bar(mapping = aes(x = organism_scientific_name,
@@ -219,7 +323,6 @@ nucleosome_xtal_resolution_species <- pdb_data %>%
     filter(experimental_method == "X-ray diffraction") %>% 
     mutate(is_histone = str_detect(molecule_name, pattern = "Histone H")) %>% 
     filter(is_histone == TRUE) %>% 
-    distinct(pdb_id, .keep_all = TRUE) %>% 
     mutate(organism_scientific_name = as_factor(as.character(organism_scientific_name))) %>% 
     select(resolution, organism_scientific_name) %>% 
     ggplot() +
@@ -255,7 +358,6 @@ nucleosome_cryoem_resolution_species <- pdb_data %>%
     filter(experimental_method == "Electron Microscopy") %>% 
     mutate(is_histone = str_detect(molecule_name, pattern = "Histone H")) %>% 
     filter(is_histone == TRUE) %>% 
-    distinct(pdb_id, .keep_all = TRUE) %>% 
     mutate(organism_scientific_name = as_factor(as.character(organism_scientific_name))) %>% 
     select(resolution, organism_scientific_name) %>% 
     ggplot() +
@@ -289,7 +391,6 @@ The graphs presented above are derived from the following dataset:
 ```{r Entire dataset}
 # Format table for display
 pdb_table <- pdb_data %>% 
-    distinct(pdb_id, .keep_all = TRUE) %>% 
     arrange(desc(citation_year)) %>% 
     select(`PDB code` = pdb_id,
            `Citation year` = citation_year,
