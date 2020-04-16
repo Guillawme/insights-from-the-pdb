@@ -41,7 +41,8 @@ pdb_queries <- c(
 )
 
 # The following PDB entries have the word "nucleosome in their title, but do not
-# actually contain a nucleosome, so we need to exclude them from the analysis
+# actually contain a nucleosome, so we need to exclude them from the analysis.
+# Unfortunately, there is no good way to automate this.
 non_nucleosome_structures <- c(
     "1hst",
     "2z2r",
@@ -57,7 +58,16 @@ non_nucleosome_structures <- c(
     "2ayu",
     "2iw5",
     "3hfd",
-    "6uch"
+    "6uch",
+    "5r4k",
+    "5r4m",
+    "5r4l",
+    "5r4o",
+    "5r4g",
+    "5r4h",
+    "5r4j",
+    "5r4i",
+    "5r4n"
 )
 
 # This is a helper pipeline to extract data
