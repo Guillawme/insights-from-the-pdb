@@ -32,7 +32,8 @@ library(stringr)
 # We need two queries: one for uppercase titles, the other for lowercase ones
 pdb_queries <- c(
     uppercase = 'https://www.ebi.ac.uk/pdbe/search/pdb/select?q=title:*UCLEOSOM*%20AND%20status:REL&fl=pdb_id,citation_year,title,experimental_method,resolution,organism_scientific_name,molecule_name,molecule_type,number_of_protein_chains&rows=1000000&wt=json',
-    lowercase = 'https://www.ebi.ac.uk/pdbe/search/pdb/select?q=title:*ucleosom*%20AND%20status:REL&fl=pdb_id,citation_year,title,experimental_method,resolution,organism_scientific_name,molecule_name,molecule_type,number_of_protein_chains&rows=1000000&wt=json'
+    lowercase = 'https://www.ebi.ac.uk/pdbe/search/pdb/select?q=title:*ucleosom*%20AND%20status:REL&fl=pdb_id,citation_year,title,experimental_method,resolution,organism_scientific_name,molecule_name,molecule_type,number_of_protein_chains&rows=1000000&wt=json',
+    ncp = 'https://www.ebi.ac.uk/pdbe/search/pdb/select?q=title:*NCP*%20AND%20status:REL&fl=pdb_id,citation_year,title,experimental_method,resolution,organism_scientific_name,molecule_name,molecule_type,number_of_protein_chains&rows=1000000&wt=json'
 )
 
 # The following PDB entries have the word "nucleosome in their title, but do not
@@ -62,7 +63,16 @@ non_nucleosome_structures <- c(
     "5r4h",
     "5r4j",
     "5r4i",
-    "5r4n"
+    "5r4n",
+    "1bj6",
+    "6qds",
+    "2iwj",
+    "4dvk",
+    "1a6b",
+    "6qdu",
+    "6ne8",
+    "1tsu",
+    "1esk"
 )
 
 # This is a helper pipeline to extract data
@@ -74,8 +84,11 @@ dig_up_data <- . %>%
 # This is a helper function to detect the presence of a binding factor
 has_binding_factor_one <- function(number_of_protein_chains, title) {
     # It takes 8 histone chains to make a nucleosome, so if the number of
-    # protein chains is not divisible by 8, this means there is a binding factor
-    if (number_of_protein_chains %% 8 != 0) {
+    # protein chains is not divisible by 8, this means there is a binding factor,
+    # unless we're seeing the overlapping dinucleosome (14 proteins chains, but
+    # they are all histones... one octamer + one hexamer)
+    oldn <- str_detect(title, "unusual")
+    if (number_of_protein_chains %% 8 != 0 & !oldn) {
         return(TRUE)
     } else {
         # But for multiple of 8 chains > 8 (i.e. 16, 24, 32, 40), we can have this
