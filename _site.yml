@@ -16,12 +16,12 @@ output:
 navbar:
   title: "Insights from the PDB"
   left:
-    - text: "Home"
-      href: index.html
     - text: "About"
       href: about.html
     - text: "Nucleosome structures"
       href: nucleosome-structures.html
+    - text: "SARS-CoV-2"
+      href: sars-cov-2.html
     - text: "DNA length in protein-DNA complexes"
       href: dna-length-in-protein-dna-complexes.html
     - text: "Free DNA"

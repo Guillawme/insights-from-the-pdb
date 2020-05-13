@@ -1,0 +1,154 @@
+---
+title: "SARS-CoV-2 structures"
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(message = FALSE, warning = FALSE)
+```
+
+**Last updated on `r date()`.**
+
+## How to re-use this work
+
+If you use these figures in your own work, please cite this website:
+<https://doi.org/10.5281/zenodo.3470119>
+
+```{r Load packages, download data and prepare dataset}
+# Load required packages
+library(magrittr)
+library(dplyr)
+library(jsonlite)
+library(forcats)
+library(ggplot2)
+library(plotly)
+library(here)
+library(lubridate)
+
+# We need two queries: one for uppercase titles, the other for lowercase ones
+pdb_query <- 'https://www.ebi.ac.uk/pdbe/search/pdb/select?q=title:*SARS-CoV-2*%20AND%20status:REL&fl=pdb_id,deposition_date,citation_year,title,experimental_method,resolution,organism_scientific_name,molecule_name,molecule_type&rows=1000000&wt=json'
+
+# This is a helper pipeline to extract data
+dig_up_data <- . %>%
+    .$response %>%
+    .$docs %>%
+    as_tibble()
+
+# Query the PDB and clean up data
+pdb_data <- pdb_query %>% 
+    fromJSON() %>% 
+    dig_up_data() %>% 
+    bind_rows() %>% 
+    mutate(
+      experimental_method   = as_factor(as.character(experimental_method)),
+      deposition_date       = as_date(ymd_hms(deposition_date)),
+      citation_year         = as.integer(citation_year),
+      molecule_name         = as.character(molecule_name),
+      molecule_type         = as_factor(as.character(molecule_type))
+      ) %>% 
+    distinct(pdb_id, .keep_all = TRUE)
+```
+
+## About this section
+
+With the ongoing [COVID-19
+pandemic](https://en.wikipedia.org/wiki/COVID-19_pandemic), new structures of
+proteins from
+[SARS-CoV-2](https://en.wikipedia.org/wiki/Severe_acute_respiratory_syndrome_coronavirus_2) are deposited to the PDB at a fast pace. The visualizations presented here
+won't help curb the pandemic (and are not medical advice, obviously), but I hope
+they will make curious and helpless minds (like myself) get a feel for the
+research effort currently being deployed against it.
+
+The following resources are a lot more relevant and actionable:
+
+- [Coronavirus Structural Task Force](https://insidecorona.net/)
+- [PDBe COVID-19 Data Portal](https://www.ebi.ac.uk/pdbe/covid-19)
+- [Crowdfight COVID-19](https://crowdfightcovid19.org/)
+
+## SARS-CoV-2 structures by deposition date
+
+All figures are interactive (you can zoom in, and hovering over elements will
+show more information).
+
+```{r SARS-CoV-2 structures by year}
+sars_cov2_structures_year <- pdb_data %>% 
+    ggplot() +
+    geom_bar(mapping = aes(x = deposition_date)) +
+    ggtitle("Structures of SARS-CoV-2 by deposition date") +
+    xlab("Deposition date") +
+    ylab("Number of PDB entries") +
+    theme_bw()
+ggplotly(sars_cov2_structures_year)
+```
+
+The two noticeable spikes (68 structures deposited on March 15th and 13
+structures deposited on April 7th) come from [a fragment screening
+experiment](https://www.diamond.ac.uk/covid-19/for-scientists/Main-protease-structure-and-XChem.html)
+performed at Diamond Light Source. All these structures are the same protein
+(main protease) in complex with candidate molecules for drug design.
+
+```{r Save SVG file of year graph, include=FALSE}
+# Save figure for download
+if (!dir.exists(here("figures"))) {
+    dir.create(here("figures"))
+}
+ggsave(filename = "sars-cov2-structures-by-year.svg",
+       plot = sars_cov2_structures_year,
+       device = "svg",
+       path = here("figures"))
+```
+
+[**Download figure in SVG format**](figures/sars-cov2-structures-by-year.svg)
+
+## SARS-CoV-2 structures by experimental method
+
+```{r SARS-CoV-2 structures by experimental method}
+sars_cov2_structures_method <- pdb_data %>% 
+    ggplot() +
+    geom_bar(mapping = aes(x = experimental_method, fill = experimental_method)) +
+    guides(fill = guide_legend(title = "Experimental method")) +
+    ggtitle("Structures of SARS-CoV-2 by experimental method") +
+    xlab("") +
+    ylab("Number of PDB entries") +
+    theme_bw()
+ggplotly(sars_cov2_structures_method)
+```
+
+```{r Save SVG file of method graph, include=FALSE}
+# Save figure for download
+if (!dir.exists(here("figures"))) {
+    dir.create(here("figures"))
+}
+ggsave(filename = "sars-cov2-structures-by-method.svg",
+       plot = sars_cov2_structures_method,
+       device = "svg",
+       path = here("figures"))
+```
+
+[**Download figure in SVG format**](figures/sars-cov2-structures-by-method.svg)
+
+
+## Dataset
+
+The graphs presented above are derived from the following dataset:
+
+```{r Entire dataset}
+# Format table for display
+pdb_table <- pdb_data %>% 
+    arrange(desc(citation_year)) %>% 
+    select(`PDB code` = pdb_id,
+           `Citation year` = citation_year,
+           `Experimental method` = experimental_method,
+           Title = title)
+pdb_table
+```
+
+```{r Save dataset as JSON, include=FALSE}
+# Save dataset for download
+if (!dir.exists(here("datasets"))) {
+    dir.create(here("datasets"))
+}
+
+write_json(pdb_data, here("datasets", "sars-cov2-structures.json"))
+```
+
+[**Download raw dataset in JSON format**](datasets/sars-cov2-structures.json)

@@ -1,0 +1,679 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+<meta charset="utf-8" />
+<meta name="generator" content="pandoc" />
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
+
+
+
+
+<title>SARS-CoV-2 structures</title>
+
+<script src="site_libs/header-attrs-2.1/header-attrs.js"></script>
+<script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="site_libs/bootstrap-3.3.5/css/simplex.min.css" rel="stylesheet" />
+<script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<script src="site_libs/jqueryui-1.11.4/jquery-ui.min.js"></script>
+<link href="site_libs/tocify-1.9.1/jquery.tocify.css" rel="stylesheet" />
+<script src="site_libs/tocify-1.9.1/jquery.tocify.js"></script>
+<script src="site_libs/navigation-1.1/tabsets.js"></script>
+<script src="site_libs/navigation-1.1/codefolding.js"></script>
+<script src="site_libs/navigation-1.1/sourceembed.js"></script>
+<link href="site_libs/pagedtable-1.1/css/pagedtable.css" rel="stylesheet" />
+<script src="site_libs/pagedtable-1.1/js/pagedtable.js"></script>
+<script src="site_libs/htmlwidgets-1.5.1/htmlwidgets.js"></script>
+<script src="site_libs/plotly-binding-4.9.2.1/plotly.js"></script>
+<script src="site_libs/typedarray-0.1/typedarray.min.js"></script>
+<link href="site_libs/crosstalk-1.1.0.1/css/crosstalk.css" rel="stylesheet" />
+<script src="site_libs/crosstalk-1.1.0.1/js/crosstalk.min.js"></script>
+<link href="site_libs/plotly-htmlwidgets-css-1.52.2/plotly-htmlwidgets.css" rel="stylesheet" />
+<script src="site_libs/plotly-main-1.52.2/plotly-latest.min.js"></script>
+
+
+<style type="text/css">code{white-space: pre;}</style>
+<style type="text/css" data-origin="pandoc">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {  background-color: #f8f8f8; }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ef2929; } /* Alert */
+code span.an { color: #8f5902; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #c4a000; } /* Attribute */
+code span.bn { color: #0000cf; } /* BaseN */
+code span.cf { color: #204a87; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4e9a06; } /* Char */
+code span.cn { color: #000000; } /* Constant */
+code span.co { color: #8f5902; font-style: italic; } /* Comment */
+code span.cv { color: #8f5902; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #8f5902; font-weight: bold; font-style: italic; } /* Documentation */
+code span.dt { color: #204a87; } /* DataType */
+code span.dv { color: #0000cf; } /* DecVal */
+code span.er { color: #a40000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #0000cf; } /* Float */
+code span.fu { color: #000000; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #8f5902; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #204a87; font-weight: bold; } /* Keyword */
+code span.op { color: #ce5c00; font-weight: bold; } /* Operator */
+code span.ot { color: #8f5902; } /* Other */
+code span.pp { color: #8f5902; font-style: italic; } /* Preprocessor */
+code span.sc { color: #000000; } /* SpecialChar */
+code span.ss { color: #4e9a06; } /* SpecialString */
+code span.st { color: #4e9a06; } /* String */
+code span.va { color: #000000; } /* Variable */
+code span.vs { color: #4e9a06; } /* VerbatimString */
+code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warning */
+
+.sourceCode .row {
+  width: 100%;
+}
+.sourceCode {
+  overflow-x: auto;
+}
+.code-folding-btn {
+  margin-right: -30px;
+}
+</style>
+<script>
+// apply pandoc div.sourceCode style to pre.sourceCode instead
+(function() {
+  var sheets = document.styleSheets;
+  for (var i = 0; i < sheets.length; i++) {
+    if (sheets[i].ownerNode.dataset["origin"] !== "pandoc") continue;
+    try { var rules = sheets[i].cssRules; } catch (e) { continue; }
+    for (var j = 0; j < rules.length; j++) {
+      var rule = rules[j];
+      // check if there is a div.sourceCode rule
+      if (rule.type !== rule.STYLE_RULE || rule.selectorText !== "div.sourceCode") continue;
+      var style = rule.style.cssText;
+      // check if color or background-color is set
+      if (rule.style.color === '' && rule.style.backgroundColor === '') continue;
+      // replace div.sourceCode by a pre.sourceCode rule
+      sheets[i].deleteRule(j);
+      sheets[i].insertRule('pre.sourceCode{' + style + '}', j);
+    }
+  }
+})();
+</script>
+<style type="text/css">
+  pre:not([class]) {
+    background-color: white;
+  }
+</style>
+
+
+<style type="text/css">
+h1 {
+  font-size: 34px;
+}
+h1.title {
+  font-size: 38px;
+}
+h2 {
+  font-size: 30px;
+}
+h3 {
+  font-size: 24px;
+}
+h4 {
+  font-size: 18px;
+}
+h5 {
+  font-size: 16px;
+}
+h6 {
+  font-size: 12px;
+}
+.table th:not([align]) {
+  text-align: left;
+}
+#rmd-source-code {
+  display: none;
+}
+</style>
+
+
+
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+code {
+  color: inherit;
+  background-color: rgba(0, 0, 0, 0.04);
+}
+img {
+  max-width:100%;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+.html-widget {
+  margin-bottom: 20px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+summary {
+  display: list-item;
+}
+</style>
+
+
+<style type="text/css">
+/* padding for bootstrap navbar */
+body {
+  padding-top: 41px;
+  padding-bottom: 40px;
+}
+/* offset scroll position for anchor links (for fixed navbar)  */
+.section h1 {
+  padding-top: 46px;
+  margin-top: -46px;
+}
+.section h2 {
+  padding-top: 46px;
+  margin-top: -46px;
+}
+.section h3 {
+  padding-top: 46px;
+  margin-top: -46px;
+}
+.section h4 {
+  padding-top: 46px;
+  margin-top: -46px;
+}
+.section h5 {
+  padding-top: 46px;
+  margin-top: -46px;
+}
+.section h6 {
+  padding-top: 46px;
+  margin-top: -46px;
+}
+.dropdown-submenu {
+  position: relative;
+}
+.dropdown-submenu>.dropdown-menu {
+  top: 0;
+  left: 100%;
+  margin-top: -6px;
+  margin-left: -1px;
+  border-radius: 0 6px 6px 6px;
+}
+.dropdown-submenu:hover>.dropdown-menu {
+  display: block;
+}
+.dropdown-submenu>a:after {
+  display: block;
+  content: " ";
+  float: right;
+  width: 0;
+  height: 0;
+  border-color: transparent;
+  border-style: solid;
+  border-width: 5px 0 5px 5px;
+  border-left-color: #cccccc;
+  margin-top: 5px;
+  margin-right: -10px;
+}
+.dropdown-submenu:hover>a:after {
+  border-left-color: #ffffff;
+}
+.dropdown-submenu.pull-left {
+  float: none;
+}
+.dropdown-submenu.pull-left>.dropdown-menu {
+  left: -100%;
+  margin-left: 10px;
+  border-radius: 6px 0 6px 6px;
+}
+</style>
+
+<script>
+// manage active state of menu based on current page
+$(document).ready(function () {
+  // active menu anchor
+  href = window.location.pathname
+  href = href.substr(href.lastIndexOf('/') + 1)
+  if (href === "")
+    href = "index.html";
+  var menuAnchor = $('a[href="' + href + '"]');
+
+  // mark it active
+  menuAnchor.parent().addClass('active');
+
+  // if it's got a parent navbar menu mark it active as well
+  menuAnchor.closest('li.dropdown').addClass('active');
+});
+</script>
+
+<!-- tabsets -->
+
+<style type="text/css">
+.tabset-dropdown > .nav-tabs {
+  display: inline-table;
+  max-height: 500px;
+  min-height: 44px;
+  overflow-y: auto;
+  background: white;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs > li.active:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
+  content: "&#xe258;";
+  border: none;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs > li.active {
+  display: block;
+}
+
+.tabset-dropdown > .nav-tabs > li > a,
+.tabset-dropdown > .nav-tabs > li > a:focus,
+.tabset-dropdown > .nav-tabs > li > a:hover {
+  border: none;
+  display: inline-block;
+  border-radius: 4px;
+  background-color: transparent;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li {
+  display: block;
+  float: none;
+}
+
+.tabset-dropdown > .nav-tabs > li {
+  display: none;
+}
+</style>
+
+<!-- code folding -->
+<style type="text/css">
+.code-folding-btn { margin-bottom: 4px; }
+</style>
+
+
+
+<style type="text/css">
+
+#TOC {
+  margin: 25px 0px 20px 0px;
+}
+@media (max-width: 768px) {
+#TOC {
+  position: relative;
+  width: 100%;
+}
+}
+
+@media print {
+.toc-content {
+  /* see https://github.com/w3c/csswg-drafts/issues/4434 */
+  float: right;
+}
+}
+
+.toc-content {
+  padding-left: 30px;
+  padding-right: 40px;
+}
+
+div.main-container {
+  max-width: 1200px;
+}
+
+div.tocify {
+  width: 20%;
+  max-width: 260px;
+  max-height: 85%;
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+  div.tocify {
+    width: 25%;
+  }
+}
+
+@media (max-width: 767px) {
+  div.tocify {
+    width: 100%;
+    max-width: none;
+  }
+}
+
+.tocify ul, .tocify li {
+  line-height: 20px;
+}
+
+.tocify-subheader .tocify-item {
+  font-size: 0.90em;
+}
+
+.tocify .list-group-item {
+  border-radius: 0px;
+}
+
+.tocify-subheader {
+  display: inline;
+}
+.tocify-subheader .tocify-item {
+  font-size: 0.95em;
+}
+
+</style>
+
+
+
+</head>
+
+<body>
+
+
+<div class="container-fluid main-container">
+
+
+<!-- setup 3col/9col grid for toc_float and main content  -->
+<div class="row-fluid">
+<div class="col-xs-12 col-sm-4 col-md-3">
+<div id="TOC" class="tocify">
+</div>
+</div>
+
+<div class="toc-content col-xs-12 col-sm-8 col-md-9">
+
+
+
+
+<div class="navbar navbar-default  navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="index.html">Insights from the PDB</a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li>
+  <a href="about.html">About</a>
+</li>
+<li>
+  <a href="nucleosome-structures.html">Nucleosome structures</a>
+</li>
+<li>
+  <a href="sars-cov-2.html">SARS-CoV-2</a>
+</li>
+<li>
+  <a href="dna-length-in-protein-dna-complexes.html">DNA length in protein-DNA complexes</a>
+</li>
+<li>
+  <a href="free-dna.html">Free DNA</a>
+</li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li>
+  <a href="https://github.com/Guillawme/insights-from-the-pdb">GitHub repository</a>
+</li>
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div><!--/.container -->
+</div><!--/.navbar -->
+
+<div class="fluid-row" id="header">
+
+<div class="btn-group pull-right">
+<button type="button" class="btn btn-default btn-xs dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span>Code</span> <span class="caret"></span></button>
+<ul class="dropdown-menu" style="min-width: 50px;">
+<li><a id="rmd-show-all-code" href="#">Show All Code</a></li>
+<li><a id="rmd-hide-all-code" href="#">Hide All Code</a></li>
+<li role="separator" class="divider"></li>
+<li><a id="rmd-download-source" href="#">Download Rmd</a></li>
+</ul>
+</div>
+
+
+
+<h1 class="title toc-ignore">SARS-CoV-2 structures</h1>
+
+</div>
+
+
+<p><strong>Last updated on Wed May 13 22:55:19 2020.</strong></p>
+<div id="how-to-re-use-this-work" class="section level2">
+<h2>How to re-use this work</h2>
+<p>If you use these figures in your own work, please cite this website: <a href="https://doi.org/10.5281/zenodo.3470119" class="uri">https://doi.org/10.5281/zenodo.3470119</a></p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a><span class="co"># Load required packages</span></span>
+<span id="cb1-2"><a href="#cb1-2"></a><span class="kw">library</span>(magrittr)</span>
+<span id="cb1-3"><a href="#cb1-3"></a><span class="kw">library</span>(dplyr)</span>
+<span id="cb1-4"><a href="#cb1-4"></a><span class="kw">library</span>(jsonlite)</span>
+<span id="cb1-5"><a href="#cb1-5"></a><span class="kw">library</span>(forcats)</span>
+<span id="cb1-6"><a href="#cb1-6"></a><span class="kw">library</span>(ggplot2)</span>
+<span id="cb1-7"><a href="#cb1-7"></a><span class="kw">library</span>(plotly)</span>
+<span id="cb1-8"><a href="#cb1-8"></a><span class="kw">library</span>(here)</span>
+<span id="cb1-9"><a href="#cb1-9"></a><span class="kw">library</span>(lubridate)</span>
+<span id="cb1-10"><a href="#cb1-10"></a></span>
+<span id="cb1-11"><a href="#cb1-11"></a><span class="co"># We need two queries: one for uppercase titles, the other for lowercase ones</span></span>
+<span id="cb1-12"><a href="#cb1-12"></a>pdb_query &lt;-<span class="st"> &#39;https://www.ebi.ac.uk/pdbe/search/pdb/select?q=title:*SARS-CoV-2*%20AND%20status:REL&amp;fl=pdb_id,deposition_date,citation_year,title,experimental_method,resolution,organism_scientific_name,molecule_name,molecule_type&amp;rows=1000000&amp;wt=json&#39;</span></span>
+<span id="cb1-13"><a href="#cb1-13"></a></span>
+<span id="cb1-14"><a href="#cb1-14"></a><span class="co"># This is a helper pipeline to extract data</span></span>
+<span id="cb1-15"><a href="#cb1-15"></a>dig_up_data &lt;-<span class="st"> </span>. <span class="op">%&gt;%</span></span>
+<span id="cb1-16"><a href="#cb1-16"></a><span class="st">    </span>.<span class="op">$</span>response <span class="op">%&gt;%</span></span>
+<span id="cb1-17"><a href="#cb1-17"></a><span class="st">    </span>.<span class="op">$</span>docs <span class="op">%&gt;%</span></span>
+<span id="cb1-18"><a href="#cb1-18"></a><span class="st">    </span><span class="kw">as_tibble</span>()</span>
+<span id="cb1-19"><a href="#cb1-19"></a></span>
+<span id="cb1-20"><a href="#cb1-20"></a><span class="co"># Query the PDB and clean up data</span></span>
+<span id="cb1-21"><a href="#cb1-21"></a>pdb_data &lt;-<span class="st"> </span>pdb_query <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb1-22"><a href="#cb1-22"></a><span class="st">    </span><span class="kw">fromJSON</span>() <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb1-23"><a href="#cb1-23"></a><span class="st">    </span><span class="kw">dig_up_data</span>() <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb1-24"><a href="#cb1-24"></a><span class="st">    </span><span class="kw">bind_rows</span>() <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb1-25"><a href="#cb1-25"></a><span class="st">    </span><span class="kw">mutate</span>(</span>
+<span id="cb1-26"><a href="#cb1-26"></a>      <span class="dt">experimental_method   =</span> <span class="kw">as_factor</span>(<span class="kw">as.character</span>(experimental_method)),</span>
+<span id="cb1-27"><a href="#cb1-27"></a>      <span class="dt">deposition_date       =</span> <span class="kw">as_date</span>(<span class="kw">ymd_hms</span>(deposition_date)),</span>
+<span id="cb1-28"><a href="#cb1-28"></a>      <span class="dt">citation_year         =</span> <span class="kw">as.integer</span>(citation_year),</span>
+<span id="cb1-29"><a href="#cb1-29"></a>      <span class="dt">molecule_name         =</span> <span class="kw">as.character</span>(molecule_name),</span>
+<span id="cb1-30"><a href="#cb1-30"></a>      <span class="dt">molecule_type         =</span> <span class="kw">as_factor</span>(<span class="kw">as.character</span>(molecule_type))</span>
+<span id="cb1-31"><a href="#cb1-31"></a>      ) <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb1-32"><a href="#cb1-32"></a><span class="st">    </span><span class="kw">distinct</span>(pdb_id, <span class="dt">.keep_all =</span> <span class="ot">TRUE</span>)</span></code></pre></div>
+</div>
+<div id="about-this-section" class="section level2">
+<h2>About this section</h2>
+<p>With the ongoing <a href="https://en.wikipedia.org/wiki/COVID-19_pandemic">COVID-19 pandemic</a>, new structures of proteins from <a href="https://en.wikipedia.org/wiki/Severe_acute_respiratory_syndrome_coronavirus_2">SARS-CoV-2</a> are deposited to the PDB at a fast pace. The visualizations presented here won’t help curb the pandemic (and are not medical advice, obviously), but I hope they will make curious and helpless minds (like myself) get a feel for the research effort currently being deployed against it.</p>
+<p>The following resources are a lot more relevant and actionable:</p>
+<ul>
+<li><a href="https://insidecorona.net/">Coronavirus Structural Task Force</a></li>
+<li><a href="https://www.ebi.ac.uk/pdbe/covid-19">PDBe COVID-19 Data Portal</a></li>
+<li><a href="https://crowdfightcovid19.org/">Crowdfight COVID-19</a></li>
+</ul>
+</div>
+<div id="sars-cov-2-structures-by-deposition-date" class="section level2">
+<h2>SARS-CoV-2 structures by deposition date</h2>
+<p>All figures are interactive (you can zoom in, and hovering over elements will show more information).</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1"></a>sars_cov2_structures_year &lt;-<span class="st"> </span>pdb_data <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb2-2"><a href="#cb2-2"></a><span class="st">    </span><span class="kw">ggplot</span>() <span class="op">+</span></span>
+<span id="cb2-3"><a href="#cb2-3"></a><span class="st">    </span><span class="kw">geom_bar</span>(<span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="dt">x =</span> deposition_date)) <span class="op">+</span></span>
+<span id="cb2-4"><a href="#cb2-4"></a><span class="st">    </span><span class="kw">ggtitle</span>(<span class="st">&quot;Structures of SARS-CoV-2 by deposition date&quot;</span>) <span class="op">+</span></span>
+<span id="cb2-5"><a href="#cb2-5"></a><span class="st">    </span><span class="kw">xlab</span>(<span class="st">&quot;Deposition date&quot;</span>) <span class="op">+</span></span>
+<span id="cb2-6"><a href="#cb2-6"></a><span class="st">    </span><span class="kw">ylab</span>(<span class="st">&quot;Number of PDB entries&quot;</span>) <span class="op">+</span></span>
+<span id="cb2-7"><a href="#cb2-7"></a><span class="st">    </span><span class="kw">theme_bw</span>()</span>
+<span id="cb2-8"><a href="#cb2-8"></a><span class="kw">ggplotly</span>(sars_cov2_structures_year)</span></code></pre></div>
+<div id="htmlwidget-f71fd3d85a9ef0b155da" style="width:672px;height:480px;" class="plotly html-widget"></div>
+<script type="application/json" data-for="htmlwidget-f71fd3d85a9ef0b155da">{"x":{"data":[{"orientation":"v","width":[0.900000000001455,0.900000000001455,0.900000000001455,0.900000000001455,0.900000000001455,0.900000000001455,0.900000000001455,0.900000000001455,0.900000000001455,0.900000000001455,0.900000000001455,0.900000000001455,0.900000000001455,0.900000000001455,0.900000000001455,0.900000000001455,0.900000000001455,0.900000000001455,0.900000000001455,0.900000000001455,0.900000000001455,0.900000000001455,0.900000000001455,0.900000000001455,0.900000000001455,0.900000000001455,0.900000000001455,0.900000000001455,0.900000000001455,0.900000000001455,0.900000000001455],"base":[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],"x":[18307,18310,18313,18317,18320,18324,18325,18330,18331,18336,18337,18339,18340,18344,18351,18352,18353,18354,18355,18358,18359,18365,18366,18367,18368,18375,18376,18380,18381,18382,18388],"y":[3,1,1,2,2,5,1,2,1,68,1,4,1,1,1,2,1,1,1,1,14,1,2,1,2,1,2,3,3,1,3],"text":["count:  3<br />deposition_date: 18307","count:  1<br />deposition_date: 18310","count:  1<br />deposition_date: 18313","count:  2<br />deposition_date: 18317","count:  2<br />deposition_date: 18320","count:  5<br />deposition_date: 18324","count:  1<br />deposition_date: 18325","count:  2<br />deposition_date: 18330","count:  1<br />deposition_date: 18331","count: 68<br />deposition_date: 18336","count:  1<br />deposition_date: 18337","count:  4<br />deposition_date: 18339","count:  1<br />deposition_date: 18340","count:  1<br />deposition_date: 18344","count:  1<br />deposition_date: 18351","count:  2<br />deposition_date: 18352","count:  1<br />deposition_date: 18353","count:  1<br />deposition_date: 18354","count:  1<br />deposition_date: 18355","count:  1<br />deposition_date: 18358","count: 14<br />deposition_date: 18359","count:  1<br />deposition_date: 18365","count:  2<br />deposition_date: 18366","count:  1<br />deposition_date: 18367","count:  2<br />deposition_date: 18368","count:  1<br />deposition_date: 18375","count:  2<br />deposition_date: 18376","count:  3<br />deposition_date: 18380","count:  3<br />deposition_date: 18381","count:  1<br />deposition_date: 18382","count:  3<br />deposition_date: 18388"],"type":"bar","marker":{"autocolorscale":false,"color":"rgba(89,89,89,1)","line":{"width":1.88976377952756,"color":"transparent"}},"showlegend":false,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null}],"layout":{"margin":{"t":43.7625570776256,"r":7.30593607305936,"b":40.1826484018265,"l":37.2602739726027},"plot_bgcolor":"rgba(255,255,255,1)","paper_bgcolor":"rgba(255,255,255,1)","font":{"color":"rgba(0,0,0,1)","family":"","size":14.6118721461187},"title":{"text":"Structures of SARS-CoV-2 by deposition date","font":{"color":"rgba(0,0,0,1)","family":"","size":17.5342465753425},"x":0,"xref":"paper"},"xaxis":{"domain":[0,1],"automargin":true,"type":"linear","autorange":false,"range":[18302.455,18392.545],"tickmode":"array","ticktext":["Mar","Apr","May"],"tickvals":[18322,18353,18383],"categoryorder":"array","categoryarray":["Mar","Apr","May"],"nticks":null,"ticks":"outside","tickcolor":"rgba(51,51,51,1)","ticklen":3.65296803652968,"tickwidth":0.66417600664176,"showticklabels":true,"tickfont":{"color":"rgba(77,77,77,1)","family":"","size":11.689497716895},"tickangle":-0,"showline":false,"linecolor":null,"linewidth":0,"showgrid":true,"gridcolor":"rgba(235,235,235,1)","gridwidth":0.66417600664176,"zeroline":false,"anchor":"y","title":{"text":"Deposition date","font":{"color":"rgba(0,0,0,1)","family":"","size":14.6118721461187}},"hoverformat":".2f"},"yaxis":{"domain":[0,1],"automargin":true,"type":"linear","autorange":false,"range":[-3.4,71.4],"tickmode":"array","ticktext":["0","20","40","60"],"tickvals":[4.44089209850063e-16,20,40,60],"categoryorder":"array","categoryarray":["0","20","40","60"],"nticks":null,"ticks":"outside","tickcolor":"rgba(51,51,51,1)","ticklen":3.65296803652968,"tickwidth":0.66417600664176,"showticklabels":true,"tickfont":{"color":"rgba(77,77,77,1)","family":"","size":11.689497716895},"tickangle":-0,"showline":false,"linecolor":null,"linewidth":0,"showgrid":true,"gridcolor":"rgba(235,235,235,1)","gridwidth":0.66417600664176,"zeroline":false,"anchor":"x","title":{"text":"Number of PDB entries","font":{"color":"rgba(0,0,0,1)","family":"","size":14.6118721461187}},"hoverformat":".2f"},"shapes":[{"type":"rect","fillcolor":"transparent","line":{"color":"rgba(51,51,51,1)","width":0.66417600664176,"linetype":"solid"},"yref":"paper","xref":"paper","x0":0,"x1":1,"y0":0,"y1":1}],"showlegend":false,"legend":{"bgcolor":"rgba(255,255,255,1)","bordercolor":"transparent","borderwidth":1.88976377952756,"font":{"color":"rgba(0,0,0,1)","family":"","size":11.689497716895}},"hovermode":"closest","barmode":"relative"},"config":{"doubleClick":"reset","showSendToCloud":false},"source":"A","attrs":{"2ecf738e1a17":{"x":{},"type":"bar"}},"cur_data":"2ecf738e1a17","visdat":{"2ecf738e1a17":["function (y) ","x"]},"highlight":{"on":"plotly_click","persistent":false,"dynamic":false,"selectize":false,"opacityDim":0.2,"selected":{"opacity":1},"debounce":0},"shinyEvents":["plotly_hover","plotly_click","plotly_selected","plotly_relayout","plotly_brushed","plotly_brushing","plotly_clickannotation","plotly_doubleclick","plotly_deselect","plotly_afterplot","plotly_sunburstclick"],"base_url":"https://plot.ly"},"evals":[],"jsHooks":[]}</script>
+<p>The two noticeable spikes (68 structures deposited on March 15th and 13 structures deposited on April 7th) come from <a href="https://www.diamond.ac.uk/covid-19/for-scientists/Main-protease-structure-and-XChem.html">a fragment screening experiment</a> performed at Diamond Light Source. All these structures are the same protein (main protease) in complex with candidate molecules for drug design.</p>
+<p><a href="figures/sars-cov2-structures-by-year.svg"><strong>Download figure in SVG format</strong></a></p>
+</div>
+<div id="sars-cov-2-structures-by-experimental-method" class="section level2">
+<h2>SARS-CoV-2 structures by experimental method</h2>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1"></a>sars_cov2_structures_method &lt;-<span class="st"> </span>pdb_data <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb3-2"><a href="#cb3-2"></a><span class="st">    </span><span class="kw">ggplot</span>() <span class="op">+</span></span>
+<span id="cb3-3"><a href="#cb3-3"></a><span class="st">    </span><span class="kw">geom_bar</span>(<span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="dt">x =</span> experimental_method, <span class="dt">fill =</span> experimental_method)) <span class="op">+</span></span>
+<span id="cb3-4"><a href="#cb3-4"></a><span class="st">    </span><span class="kw">guides</span>(<span class="dt">fill =</span> <span class="kw">guide_legend</span>(<span class="dt">title =</span> <span class="st">&quot;Experimental method&quot;</span>)) <span class="op">+</span></span>
+<span id="cb3-5"><a href="#cb3-5"></a><span class="st">    </span><span class="kw">ggtitle</span>(<span class="st">&quot;Structures of SARS-CoV-2 by experimental method&quot;</span>) <span class="op">+</span></span>
+<span id="cb3-6"><a href="#cb3-6"></a><span class="st">    </span><span class="kw">xlab</span>(<span class="st">&quot;&quot;</span>) <span class="op">+</span></span>
+<span id="cb3-7"><a href="#cb3-7"></a><span class="st">    </span><span class="kw">ylab</span>(<span class="st">&quot;Number of PDB entries&quot;</span>) <span class="op">+</span></span>
+<span id="cb3-8"><a href="#cb3-8"></a><span class="st">    </span><span class="kw">theme_bw</span>()</span>
+<span id="cb3-9"><a href="#cb3-9"></a><span class="kw">ggplotly</span>(sars_cov2_structures_method)</span></code></pre></div>
+<div id="htmlwidget-5380100d856a9526e4dc" style="width:672px;height:480px;" class="plotly html-widget"></div>
+<script type="application/json" data-for="htmlwidget-5380100d856a9526e4dc">{"x":{"data":[{"orientation":"v","width":0.9,"base":0,"x":[1],"y":[127],"text":"count: 127<br />experimental_method: X-ray diffraction<br />experimental_method: X-ray diffraction","type":"bar","marker":{"autocolorscale":false,"color":"rgba(248,118,109,1)","line":{"width":1.88976377952756,"color":"transparent"}},"name":"X-ray diffraction","legendgroup":"X-ray diffraction","showlegend":true,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"orientation":"v","width":0.9,"base":0,"x":[2],"y":[5],"text":"count:   5<br />experimental_method: Electron Microscopy<br />experimental_method: Electron Microscopy","type":"bar","marker":{"autocolorscale":false,"color":"rgba(0,186,56,1)","line":{"width":1.88976377952756,"color":"transparent"}},"name":"Electron Microscopy","legendgroup":"Electron Microscopy","showlegend":true,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"orientation":"v","width":0.9,"base":0,"x":[3],"y":[1],"text":"count:   1<br />experimental_method: Solution NMR<br />experimental_method: Solution NMR","type":"bar","marker":{"autocolorscale":false,"color":"rgba(97,156,255,1)","line":{"width":1.88976377952756,"color":"transparent"}},"name":"Solution NMR","legendgroup":"Solution NMR","showlegend":true,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null}],"layout":{"margin":{"t":43.7625570776256,"r":7.30593607305936,"b":25.5707762557078,"l":43.1050228310502},"plot_bgcolor":"rgba(255,255,255,1)","paper_bgcolor":"rgba(255,255,255,1)","font":{"color":"rgba(0,0,0,1)","family":"","size":14.6118721461187},"title":{"text":"Structures of SARS-CoV-2 by experimental method","font":{"color":"rgba(0,0,0,1)","family":"","size":17.5342465753425},"x":0,"xref":"paper"},"xaxis":{"domain":[0,1],"automargin":true,"type":"linear","autorange":false,"range":[0.4,3.6],"tickmode":"array","ticktext":["X-ray diffraction","Electron Microscopy","Solution NMR"],"tickvals":[1,2,3],"categoryorder":"array","categoryarray":["X-ray diffraction","Electron Microscopy","Solution NMR"],"nticks":null,"ticks":"outside","tickcolor":"rgba(51,51,51,1)","ticklen":3.65296803652968,"tickwidth":0.66417600664176,"showticklabels":true,"tickfont":{"color":"rgba(77,77,77,1)","family":"","size":11.689497716895},"tickangle":-0,"showline":false,"linecolor":null,"linewidth":0,"showgrid":true,"gridcolor":"rgba(235,235,235,1)","gridwidth":0.66417600664176,"zeroline":false,"anchor":"y","title":{"text":"","font":{"color":"rgba(0,0,0,1)","family":"","size":14.6118721461187}},"hoverformat":".2f"},"yaxis":{"domain":[0,1],"automargin":true,"type":"linear","autorange":false,"range":[-6.35,133.35],"tickmode":"array","ticktext":["0","50","100"],"tickvals":[0,50,100],"categoryorder":"array","categoryarray":["0","50","100"],"nticks":null,"ticks":"outside","tickcolor":"rgba(51,51,51,1)","ticklen":3.65296803652968,"tickwidth":0.66417600664176,"showticklabels":true,"tickfont":{"color":"rgba(77,77,77,1)","family":"","size":11.689497716895},"tickangle":-0,"showline":false,"linecolor":null,"linewidth":0,"showgrid":true,"gridcolor":"rgba(235,235,235,1)","gridwidth":0.66417600664176,"zeroline":false,"anchor":"x","title":{"text":"Number of PDB entries","font":{"color":"rgba(0,0,0,1)","family":"","size":14.6118721461187}},"hoverformat":".2f"},"shapes":[{"type":"rect","fillcolor":"transparent","line":{"color":"rgba(51,51,51,1)","width":0.66417600664176,"linetype":"solid"},"yref":"paper","xref":"paper","x0":0,"x1":1,"y0":0,"y1":1}],"showlegend":true,"legend":{"bgcolor":"rgba(255,255,255,1)","bordercolor":"transparent","borderwidth":1.88976377952756,"font":{"color":"rgba(0,0,0,1)","family":"","size":11.689497716895},"y":0.913385826771654},"annotations":[{"text":"Experimental method","x":1.02,"y":1,"showarrow":false,"ax":0,"ay":0,"font":{"color":"rgba(0,0,0,1)","family":"","size":14.6118721461187},"xref":"paper","yref":"paper","textangle":-0,"xanchor":"left","yanchor":"bottom","legendTitle":true}],"hovermode":"closest","barmode":"relative"},"config":{"doubleClick":"reset","showSendToCloud":false},"source":"A","attrs":{"2ecf1ac7109b":{"x":{},"fill":{},"type":"bar"}},"cur_data":"2ecf1ac7109b","visdat":{"2ecf1ac7109b":["function (y) ","x"]},"highlight":{"on":"plotly_click","persistent":false,"dynamic":false,"selectize":false,"opacityDim":0.2,"selected":{"opacity":1},"debounce":0},"shinyEvents":["plotly_hover","plotly_click","plotly_selected","plotly_relayout","plotly_brushed","plotly_brushing","plotly_clickannotation","plotly_doubleclick","plotly_deselect","plotly_afterplot","plotly_sunburstclick"],"base_url":"https://plot.ly"},"evals":[],"jsHooks":[]}</script>
+<p><a href="figures/sars-cov2-structures-by-method.svg"><strong>Download figure in SVG format</strong></a></p>
+</div>
+<div id="dataset" class="section level2">
+<h2>Dataset</h2>
+<p>The graphs presented above are derived from the following dataset:</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1"></a><span class="co"># Format table for display</span></span>
+<span id="cb4-2"><a href="#cb4-2"></a>pdb_table &lt;-<span class="st"> </span>pdb_data <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb4-3"><a href="#cb4-3"></a><span class="st">    </span><span class="kw">arrange</span>(<span class="kw">desc</span>(citation_year)) <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb4-4"><a href="#cb4-4"></a><span class="st">    </span><span class="kw">select</span>(<span class="st">`</span><span class="dt">PDB code</span><span class="st">`</span> =<span class="st"> </span>pdb_id,</span>
+<span id="cb4-5"><a href="#cb4-5"></a>           <span class="st">`</span><span class="dt">Citation year</span><span class="st">`</span> =<span class="st"> </span>citation_year,</span>
+<span id="cb4-6"><a href="#cb4-6"></a>           <span class="st">`</span><span class="dt">Experimental method</span><span class="st">`</span> =<span class="st"> </span>experimental_method,</span>
+<span id="cb4-7"><a href="#cb4-7"></a>           <span class="dt">Title =</span> title)</span>
+<span id="cb4-8"><a href="#cb4-8"></a>pdb_table</span></code></pre></div>
+<div data-pagedtable="false">
+<script data-pagedtable-source type="application/json">
+{"columns":[{"label":["PDB code"],"name":[1],"type":["chr"],"align":["left"]},{"label":["Citation year"],"name":[2],"type":["int"],"align":["right"]},{"label":["Experimental method"],"name":[3],"type":["fctr"],"align":["left"]},{"label":["Title"],"name":[4],"type":["chr"],"align":["left"]}],"data":[{"1":"7btf","2":"2020","3":"Electron Microscopy","4":"SARS-CoV-2 RNA-dependent RNA polymerase in complex with cofactors in reduced condition"},{"1":"6m0j","2":"2020","3":"X-ray diffraction","4":"Crystal structure of SARS-CoV-2 spike receptor-binding domain bound with ACE2"},{"1":"6vxx","2":"2020","3":"Electron Microscopy","4":"Structure of the SARS-CoV-2 spike glycoprotein (closed state)"},{"1":"6y2f","2":"2020","3":"X-ray diffraction","4":"Crystal structure (monoclinic form) of the complex resulting from the reaction between SARS-CoV-2 (2019-nCoV) main protease and tert-butyl (1-((S)-1-(((S)-4-(benzylamino)-3,4-dioxo-1-((S)-2-oxopyrrolidin-3-yl)butan-2-yl)amino)-3-cyclopropyl-1-oxopropan-2-yl)-2-oxo-1,2-dihydropyridin-3-yl)carbamate (alpha-ketoamide 13b)"},{"1":"6y2e","2":"2020","3":"X-ray diffraction","4":"Crystal structure of the free enzyme of the SARS-CoV-2 (2019-nCoV) main protease"},{"1":"6w41","2":"2020","3":"X-ray diffraction","4":"Crystal structure of SARS-CoV-2 receptor binding domain in complex with human antibody CR3022"},{"1":"6y2g","2":"2020","3":"X-ray diffraction","4":"Crystal structure (orthorhombic form) of the complex resulting from the reaction between SARS-CoV-2 (2019-nCoV) main protease and tert-butyl (1-((S)-1-(((S)-4-(benzylamino)-3,4-dioxo-1-((S)-2-oxopyrrolidin-3-yl)butan-2-yl)amino)-3-cyclopropyl-1-oxopropan-2-yl)-2-oxo-1,2-dihydropyridin-3-yl)carbamate (alpha-ketoamide 13b)"},{"1":"6vyb","2":"2020","3":"Electron Microscopy","4":"SARS-CoV-2 spike ectodomain structure (open state)"},{"1":"6vw1","2":"2020","3":"X-ray diffraction","4":"Structure of SARS-CoV-2 chimeric receptor-binding domain complexed with its receptor human ACE2"},{"1":"5rfp","2":"NA","3":"X-ray diffraction","4":"PanDDA analysis group deposition -- Crystal Structure of SARS-CoV-2 main protease in complex with PCM-0102190"},{"1":"5rft","2":"NA","3":"X-ray diffraction","4":"PanDDA analysis group deposition -- Crystal Structure of SARS-CoV-2 main protease in complex with PCM-0102432"},{"1":"5rfj","2":"NA","3":"X-ray diffraction","4":"PanDDA analysis group deposition -- Crystal Structure of SARS-CoV-2 main protease in complex with PCM-0103067"},{"1":"6yb7","2":"NA","3":"X-ray diffraction","4":"SARS-CoV-2 main protease with unliganded active site (2019-nCoV, coronavirus disease 2019, COVID-19)"},{"1":"5rgh","2":"NA","3":"X-ray diffraction","4":"PanDDA analysis group deposition SARS-CoV-2 main protease fragment screen -- Crystal Structure of SARS-CoV-2 main protease in complex with Z1619978933 (Mpro-x0395)"},{"1":"6ywl","2":"NA","3":"X-ray diffraction","4":"Crystal structure of SARS-CoV-2 (Covid-19) NSP3 macrodomain in complex with ADP-ribose"},{"1":"5rek","2":"NA","3":"X-ray diffraction","4":"PanDDA analysis group deposition -- Crystal Structure of SARS-CoV-2 main protease in complex with PCM-0102327"},{"1":"6wkq","2":"NA","3":"X-ray diffraction","4":"1.98 Angstrom Resolution Crystal Structure of NSP16-NSP10 Heterodimer from SARS-CoV-2 in Complex with Sinefungin"},{"1":"5rev","2":"NA","3":"X-ray diffraction","4":"PanDDA analysis group deposition -- Crystal Structure of SARS-CoV-2 main protease in complex with PCM-0103072"},{"1":"5rgo","2":"NA","3":"X-ray diffraction","4":"PanDDA analysis group deposition SARS-CoV-2 main protease fragment screen -- Crystal Structure of SARS-CoV-2 main protease in complex with PCM-0102248 (Mpro-x0736)"},{"1":"5rf3","2":"NA","3":"X-ray diffraction","4":"PanDDA analysis group deposition -- Crystal Structure of SARS-CoV-2 main protease in complex with Z1741970824"},{"1":"5rfh","2":"NA","3":"X-ray diffraction","4":"PanDDA analysis group deposition -- Crystal Structure of SARS-CoV-2 main protease in complex with PCM-0102277"},{"1":"5rf7","2":"NA","3":"X-ray diffraction","4":"PanDDA analysis group deposition -- Crystal Structure of SARS-CoV-2 main protease in complex with Z316425948_minor"},{"1":"5reb","2":"NA","3":"X-ray diffraction","4":"PanDDA analysis group deposition -- Crystal Structure of SARS-CoV-2 main protease in complex with Z2856434899"},{"1":"5rfb","2":"NA","3":"X-ray diffraction","4":"PanDDA analysis group deposition -- Crystal Structure of SARS-CoV-2 main protease in complex with Z1271660837"},{"1":"5rfr","2":"NA","3":"X-ray diffraction","4":"PanDDA analysis group deposition -- Crystal Structure of SARS-CoV-2 main protease in complex with PCM-0102169"},{"1":"5rfm","2":"NA","3":"X-ray diffraction","4":"PanDDA analysis group deposition -- Crystal Structure of SARS-CoV-2 main protease in complex with PCM-0102539"},{"1":"5rgl","2":"NA","3":"X-ray diffraction","4":"PanDDA analysis group deposition SARS-CoV-2 main protease fragment screen -- Crystal Structure of SARS-CoV-2 main protease in complex with PCM-0102962 (Mpro-x0705)"},{"1":"5rfv","2":"NA","3":"X-ray diffraction","4":"PanDDA analysis group deposition -- Crystal Structure of SARS-CoV-2 main protease in complex with PCM-0102306"},{"1":"6wqd","2":"NA","3":"X-ray diffraction","4":"The 1.95 A Crystal Structure of the Co-factor Complex of NSP7 and the C-terminal Domain of NSP8 from SARS-CoV-2"},{"1":"5rfx","2":"NA","3":"X-ray diffraction","4":"PanDDA analysis group deposition -- Crystal Structure of SARS-CoV-2 main protease in complex with PCM-0102254"},{"1":"5rei","2":"NA","3":"X-ray diffraction","4":"PanDDA analysis group deposition -- Crystal Structure of SARS-CoV-2 main protease in complex with Z2856434856"},{"1":"5rgj","2":"NA","3":"X-ray diffraction","4":"PanDDA analysis group deposition SARS-CoV-2 main protease fragment screen -- Crystal Structure of SARS-CoV-2 main protease in complex with Z1401276297 (Mpro-x0425)"},{"1":"5rez","2":"NA","3":"X-ray diffraction","4":"PanDDA analysis group deposition -- Crystal Structure of SARS-CoV-2 main protease in complex with POB0129"},{"1":"6ywk","2":"NA","3":"X-ray diffraction","4":"Crystal structure of SARS-CoV-2 (Covid-19) NSP3 macrodomain in complex with HEPES"},{"1":"6wji","2":"NA","3":"X-ray diffraction","4":"2.05 Angstrom Resolution Crystal Structure of C-terminal Dimerization Domain of Nucleocapsid Phosphoprotein from SARS-CoV-2"},{"1":"6w9q","2":"NA","3":"X-ray diffraction","4":"Peptide-bound SARS-CoV-2 Nsp9 RNA-replicase"},{"1":"5rew","2":"NA","3":"X-ray diffraction","4":"PanDDA analysis group deposition -- Crystal Structure of SARS-CoV-2 main protease in complex with PCM-0102275"},{"1":"6ywm","2":"NA","3":"X-ray diffraction","4":"Crystal structure of SARS-CoV-2 (Covid-19) NSP3 macrodomain in complex with MES"},{"1":"5rgm","2":"NA","3":"X-ray diffraction","4":"PanDDA analysis group deposition SARS-CoV-2 main protease fragment screen -- Crystal Structure of SARS-CoV-2 main protease in complex with PCM-0102142 (Mpro-x0708)"},{"1":"5rfy","2":"NA","3":"X-ray diffraction","4":"PanDDA analysis group deposition -- Crystal Structure of SARS-CoV-2 main protease in complex with PCM-0102974"},{"1":"5ref","2":"NA","3":"X-ray diffraction","4":"PanDDA analysis group deposition -- Crystal Structure of SARS-CoV-2 main protease in complex with Z24758179"},{"1":"5rem","2":"NA","3":"X-ray diffraction","4":"PanDDA analysis group deposition -- Crystal Structure of SARS-CoV-2 main protease in complex with PCM-0103016"},{"1":"5rfd","2":"NA","3":"X-ray diffraction","4":"PanDDA analysis group deposition -- Crystal Structure of SARS-CoV-2 main protease in complex with Z126932614"},{"1":"5ret","2":"NA","3":"X-ray diffraction","4":"PanDDA analysis group deposition -- Crystal Structure of SARS-CoV-2 main protease in complex with PCM-0102269"},{"1":"5rfo","2":"NA","3":"X-ray diffraction","4":"PanDDA analysis group deposition -- Crystal Structure of SARS-CoV-2 main protease in complex with PCM-0102972"},{"1":"5re4","2":"NA","3":"X-ray diffraction","4":"PanDDA analysis group deposition -- Crystal Structure of SARS-CoV-2 main protease in complex with Z1129283193"},{"1":"6ym0","2":"NA","3":"X-ray diffraction","4":"Crystal structure of the SARS-CoV-2 receptor binding domain in complex with CR3022 Fab (crystal form 1)"},{"1":"5res","2":"NA","3":"X-ray diffraction","4":"PanDDA analysis group deposition -- Crystal Structure of SARS-CoV-2 main protease in complex with PCM-0102281"},{"1":"6yyt","2":"NA","3":"Electron Microscopy","4":"Structure of replicating SARS-CoV-2 polymerase"},{"1":"5rfn","2":"NA","3":"X-ray diffraction","4":"PanDDA analysis group deposition -- Crystal Structure of SARS-CoV-2 main protease in complex with PCM-0102868"},{"1":"5rf6","2":"NA","3":"X-ray diffraction","4":"PanDDA analysis group deposition -- Crystal Structure of SARS-CoV-2 main protease in complex with Z1348371854"},{"1":"5ren","2":"NA","3":"X-ray diffraction","4":"PanDDA analysis group deposition -- Crystal Structure of SARS-CoV-2 main protease in complex with PCM-0102425"},{"1":"6w75","2":"NA","3":"X-ray diffraction","4":"1.95 Angstrom Resolution Crystal Structure of NSP10 - NSP16 Complex from SARS-CoV-2"},{"1":"6woj","2":"NA","3":"X-ray diffraction","4":"Structure of the SARS-CoV-2 macrodomain (NSP3) in complex with ADP-ribose"},{"1":"6w37","2":"NA","3":"X-ray diffraction","4":"STRUCTURE OF THE SARS-CoV-2 ORF7A ENCODED ACCESSORY PROTEIN"},{"1":"6wrz","2":"NA","3":"X-ray diffraction","4":"Crystal Structure of Nsp16-Nsp10 Heterodimer from SARS-CoV-2 with 7-methyl-GpppA and S-adenosyl-L-homocysteine in the Active Site and Sulfates in the mRNA Binding Groove."},{"1":"5rer","2":"NA","3":"X-ray diffraction","4":"PanDDA analysis group deposition -- Crystal Structure of SARS-CoV-2 main protease in complex with PCM-0102615"},{"1":"6wnp","2":"NA","3":"X-ray diffraction","4":"X-ray Structure of SARS-CoV-2 main protease bound to Boceprevir at 1.45 A"},{"1":"6yor","2":"NA","3":"Electron Microscopy","4":"Structure of the SARS-CoV-2 spike S1 protein in complex with CR3022 Fab"},{"1":"6wvn","2":"NA","3":"X-ray diffraction","4":"Crystal Structure of Nsp16-Nsp10 from SARS-CoV-2 in Complex with 7-methyl-GpppA and S-Adenosylmethionine."},{"1":"5r80","2":"NA","3":"X-ray diffraction","4":"PanDDA analysis group deposition -- Crystal Structure of SARS-CoV-2 main protease in complex with Z18197050"},{"1":"5rf9","2":"NA","3":"X-ray diffraction","4":"PanDDA analysis group deposition -- Crystal Structure of SARS-CoV-2 main protease in complex with Z217038356"},{"1":"6yhu","2":"NA","3":"X-ray diffraction","4":"Crystal structure of the nsp7-nsp8 complex of SARS-CoV-2"},{"1":"5rey","2":"NA","3":"X-ray diffraction","4":"PanDDA analysis group deposition -- Crystal Structure of SARS-CoV-2 main protease in complex with PCM-0102911"},{"1":"5re9","2":"NA","3":"X-ray diffraction","4":"PanDDA analysis group deposition -- Crystal Structure of SARS-CoV-2 main protease in complex with Z2856434836"},{"1":"6wey","2":"NA","3":"X-ray diffraction","4":"High-resolution structure of the SARS-CoV-2 NSP3 Macro X domain"},{"1":"5reh","2":"NA","3":"X-ray diffraction","4":"PanDDA analysis group deposition -- Crystal Structure of SARS-CoV-2 main protease in complex with Z111507846"},{"1":"5rf2","2":"NA","3":"X-ray diffraction","4":"PanDDA analysis group deposition -- Crystal Structure of SARS-CoV-2 main protease in complex with Z1741969146"},{"1":"5rf8","2":"NA","3":"X-ray diffraction","4":"PanDDA analysis group deposition -- Crystal Structure of SARS-CoV-2 main protease in complex with Z271004858"},{"1":"5r8t","2":"NA","3":"X-ray diffraction","4":"PanDDA analysis group deposition of ground-state model of SARS-CoV-2 main protease screened against DSI poised (Enamine), Fraglites and Peplites (Newcastle university), Mini Frags (Astex), York 3D (York university), electrophile cysteine covalent (Weizman institute) fragment libraries"},{"1":"5rfk","2":"NA","3":"X-ray diffraction","4":"PanDDA analysis group deposition -- Crystal Structure of SARS-CoV-2 main protease in complex with PCM-0102575"},{"1":"5rep","2":"NA","3":"X-ray diffraction","4":"PanDDA analysis group deposition -- Crystal Structure of SARS-CoV-2 main protease in complex with PCM-0102201"},{"1":"5rgn","2":"NA","3":"X-ray diffraction","4":"PanDDA analysis group deposition SARS-CoV-2 main protease fragment screen -- Crystal Structure of SARS-CoV-2 main protease in complex with PCM-0102759 (Mpro-x0731)"},{"1":"5rec","2":"NA","3":"X-ray diffraction","4":"PanDDA analysis group deposition -- Crystal Structure of SARS-CoV-2 main protease in complex with Z1587220559"},{"1":"6wcf","2":"NA","3":"X-ray diffraction","4":"Crystal Structure of ADP ribose phosphatase of NSP3 from SARS-CoV-2 in complex with MES"},{"1":"5rff","2":"NA","3":"X-ray diffraction","4":"PanDDA analysis group deposition -- Crystal Structure of SARS-CoV-2 main protease in complex with PCM-0102704"},{"1":"5re5","2":"NA","3":"X-ray diffraction","4":"PanDDA analysis group deposition -- Crystal Structure of SARS-CoV-2 main protease in complex with Z33545544"},{"1":"6w4h","2":"NA","3":"X-ray diffraction","4":"1.80 Angstrom Resolution Crystal Structure of NSP16 - NSP10 Complex from SARS-CoV-2"},{"1":"5rf0","2":"NA","3":"X-ray diffraction","4":"PanDDA analysis group deposition -- Crystal Structure of SARS-CoV-2 main protease in complex with POB0073"},{"1":"5rg0","2":"NA","3":"X-ray diffraction","4":"PanDDA analysis group deposition -- Crystal Structure of SARS-CoV-2 main protease in complex with PCM-0102535"},{"1":"6wjt","2":"NA","3":"X-ray diffraction","4":"2.0 Angstrom Resolution Crystal Structure of Nsp16-Nsp10 Heterodimer from SARS-CoV-2 in Complex with S-Adenosyl-L-Homocysteine"},{"1":"5reu","2":"NA","3":"X-ray diffraction","4":"PanDDA analysis group deposition -- Crystal Structure of SARS-CoV-2 main protease in complex with PCM-0102395"},{"1":"6m2q","2":"NA","3":"X-ray diffraction","4":"SARS-CoV-2 3CL protease (3CL pro) apo structure (space group C21)"},{"1":"6y84","2":"NA","3":"X-ray diffraction","4":"SARS-CoV-2 main protease with unliganded active site (2019-nCoV, coronavirus disease 2019, COVID-19)"},{"1":"5rfe","2":"NA","3":"X-ray diffraction","4":"PanDDA analysis group deposition -- Crystal Structure of SARS-CoV-2 main protease in complex with Z509756472"},{"1":"6yi3","2":"NA","3":"Solution NMR","4":"The N-terminal RNA-binding domain of the SARS-CoV-2 nucleocapsid phosphoprotein"},{"1":"6w7y","2":"NA","3":"X-ray diffraction","4":"Crystal structure of SARS-CoV and SARS-CoV-2 reactive human antibody CR3022"},{"1":"6m2n","2":"NA","3":"X-ray diffraction","4":"SARS-CoV-2 3CL protease (3CL pro) in complex with a novel inhibitor"},{"1":"5re7","2":"NA","3":"X-ray diffraction","4":"PanDDA analysis group deposition -- Crystal Structure of SARS-CoV-2 main protease in complex with Z30932204"},{"1":"5rgq","2":"NA","3":"X-ray diffraction","4":"PanDDA analysis group deposition SARS-CoV-2 main protease fragment screen -- Crystal Structure of SARS-CoV-2 main protease in complex with Z1849009686 (Mpro-x1086)"},{"1":"5reo","2":"NA","3":"X-ray diffraction","4":"PanDDA analysis group deposition -- Crystal Structure of SARS-CoV-2 main protease in complex with PCM-0102578"},{"1":"5r7z","2":"NA","3":"X-ray diffraction","4":"PanDDA analysis group deposition -- Crystal Structure of SARS-CoV-2 main protease in complex with Z1220452176"},{"1":"5red","2":"NA","3":"X-ray diffraction","4":"PanDDA analysis group deposition -- Crystal Structure of SARS-CoV-2 main protease in complex with Z2856434865"},{"1":"6wks","2":"NA","3":"X-ray diffraction","4":"Structure of SARS-CoV-2 nsp16/nsp10 ternary complex"},{"1":"5rgs","2":"NA","3":"X-ray diffraction","4":"PanDDA analysis group deposition SARS-CoV-2 main protease fragment screen -- Crystal Structure of SARS-CoV-2 main protease in complex with Z1259086950 (Mpro-x1163)"},{"1":"5rfs","2":"NA","3":"X-ray diffraction","4":"PanDDA analysis group deposition -- Crystal Structure of SARS-CoV-2 main protease in complex with PCM-0102739"},{"1":"5rea","2":"NA","3":"X-ray diffraction","4":"PanDDA analysis group deposition -- Crystal Structure of SARS-CoV-2 main protease in complex with Z31432226"},{"1":"5rfi","2":"NA","3":"X-ray diffraction","4":"PanDDA analysis group deposition -- Crystal Structure of SARS-CoV-2 main protease in complex with PCM-0102353"},{"1":"5rg1","2":"NA","3":"X-ray diffraction","4":"PanDDA analysis group deposition SARS-CoV-2 main protease fragment screen -- Crystal Structure of SARS-CoV-2 main protease in complex with NCL-00024905"},{"1":"5rgr","2":"NA","3":"X-ray diffraction","4":"PanDDA analysis group deposition SARS-CoV-2 main protease fragment screen -- Crystal Structure of SARS-CoV-2 main protease in complex with Z328695024 (Mpro-x1101)"},{"1":"5rfq","2":"NA","3":"X-ray diffraction","4":"PanDDA analysis group deposition -- Crystal Structure of SARS-CoV-2 main protease in complex with PCM-0102179"},{"1":"5rgp","2":"NA","3":"X-ray diffraction","4":"PanDDA analysis group deposition SARS-CoV-2 main protease fragment screen -- Crystal Structure of SARS-CoV-2 main protease in complex with PCM-0102628 (Mpro-x0771)"},{"1":"5rf4","2":"NA","3":"X-ray diffraction","4":"PanDDA analysis group deposition -- Crystal Structure of SARS-CoV-2 main protease in complex with Z1741982125"},{"1":"6wq3","2":"NA","3":"X-ray diffraction","4":"Crystal Structure of Nsp16-Nsp10 Heterodimer from SARS-CoV-2 in Complex with 7-methyl-GpppA and S-adenosyl-L-homocysteine."},{"1":"5rgg","2":"NA","3":"X-ray diffraction","4":"PanDDA analysis group deposition SARS-CoV-2 main protease fragment screen -- Crystal Structure of SARS-CoV-2 main protease in complex with Z2856434890 (Mpro-x0165)"},{"1":"6wen","2":"NA","3":"X-ray diffraction","4":"Crystal Structure of ADP ribose phosphatase of NSP3 from SARS-CoV-2 in the apo form"},{"1":"5rfu","2":"NA","3":"X-ray diffraction","4":"PanDDA analysis group deposition -- Crystal Structure of SARS-CoV-2 main protease in complex with PCM-0102121"},{"1":"6wqf","2":"NA","3":"X-ray diffraction","4":"Structural Plasticity of the SARS-CoV-2 3CL Mpro Active Site Cavity Revealed by Room Temperature X-ray Crystallography"},{"1":"5rf5","2":"NA","3":"X-ray diffraction","4":"PanDDA analysis group deposition -- Crystal Structure of SARS-CoV-2 main protease in complex with Z3241250482"},{"1":"5rej","2":"NA","3":"X-ray diffraction","4":"PanDDA analysis group deposition -- Crystal Structure of SARS-CoV-2 main protease in complex with PCM-0102241"},{"1":"6yz1","2":"NA","3":"X-ray diffraction","4":"The crystal structure of SARS-CoV-2 nsp10-nsp16 methyltransferase complex with Sinefungin"},{"1":"5rgk","2":"NA","3":"X-ray diffraction","4":"PanDDA analysis group deposition SARS-CoV-2 main protease fragment screen -- Crystal Structure of SARS-CoV-2 main protease in complex with Z1310876699 (Mpro-x0426)"},{"1":"5ree","2":"NA","3":"X-ray diffraction","4":"PanDDA analysis group deposition -- Crystal Structure of SARS-CoV-2 main protease in complex with Z2217052426"},{"1":"5rel","2":"NA","3":"X-ray diffraction","4":"PanDDA analysis group deposition -- Crystal Structure of SARS-CoV-2 main protease in complex with PCM-0102340"},{"1":"5re6","2":"NA","3":"X-ray diffraction","4":"PanDDA analysis group deposition -- Crystal Structure of SARS-CoV-2 main protease in complex with Z54571979"},{"1":"5re8","2":"NA","3":"X-ray diffraction","4":"PanDDA analysis group deposition -- Crystal Structure of SARS-CoV-2 main protease in complex with Z2737076969"},{"1":"5rfl","2":"NA","3":"X-ray diffraction","4":"PanDDA analysis group deposition -- Crystal Structure of SARS-CoV-2 main protease in complex with PCM-0102389"},{"1":"5rfz","2":"NA","3":"X-ray diffraction","4":"PanDDA analysis group deposition -- Crystal Structure of SARS-CoV-2 main protease in complex with PCM-0102274"},{"1":"5rfw","2":"NA","3":"X-ray diffraction","4":"PanDDA analysis group deposition -- Crystal Structure of SARS-CoV-2 main protease in complex with PCM-0102243"},{"1":"5rf1","2":"NA","3":"X-ray diffraction","4":"PanDDA analysis group deposition -- Crystal Structure of SARS-CoV-2 main protease in complex with NCL-00023830"},{"1":"6m3m","2":"NA","3":"X-ray diffraction","4":"Crystal structure of SARS-CoV-2 nucleocapsid protein N-terminal RNA binding domain"},{"1":"5rfa","2":"NA","3":"X-ray diffraction","4":"PanDDA analysis group deposition -- Crystal Structure of SARS-CoV-2 main protease in complex with Z2643472210"},{"1":"5rfc","2":"NA","3":"X-ray diffraction","4":"PanDDA analysis group deposition -- Crystal Structure of SARS-CoV-2 main protease in complex with Z979145504"},{"1":"5rex","2":"NA","3":"X-ray diffraction","4":"PanDDA analysis group deposition -- Crystal Structure of SARS-CoV-2 main protease in complex with PCM-0102287"},{"1":"6ynq","2":"NA","3":"X-ray diffraction","4":"Structure of SARS-CoV-2 Main Protease bound to 2-Methyl-1-tetralone."},{"1":"6yla","2":"NA","3":"X-ray diffraction","4":"Crystal structure of the SARS-CoV-2 receptor binding domain in complex with CR3022 Fab"},{"1":"5rgi","2":"NA","3":"X-ray diffraction","4":"PanDDA analysis group deposition SARS-CoV-2 main protease fragment screen -- Crystal Structure of SARS-CoV-2 main protease in complex with Z369936976 (Mpro-x0397)"},{"1":"5rfg","2":"NA","3":"X-ray diffraction","4":"PanDDA analysis group deposition -- Crystal Structure of SARS-CoV-2 main protease in complex with PCM-0102372"},{"1":"5rg2","2":"NA","3":"X-ray diffraction","4":"PanDDA analysis group deposition SARS-CoV-2 main protease fragment screen -- Crystal Structure of SARS-CoV-2 main protease in complex with NCL-00025058"},{"1":"5reg","2":"NA","3":"X-ray diffraction","4":"PanDDA analysis group deposition -- Crystal Structure of SARS-CoV-2 main protease in complex with Z1545313172"},{"1":"6yt8","2":"NA","3":"X-ray diffraction","4":"Structure of SARS-CoV-2 Main Protease bound to pyrithione zinc"},{"1":"5rg3","2":"NA","3":"X-ray diffraction","4":"PanDDA analysis group deposition SARS-CoV-2 main protease fragment screen -- Crystal Structure of SARS-CoV-2 main protease in complex with NCL-00025412"},{"1":"5r83","2":"NA","3":"X-ray diffraction","4":"PanDDA analysis group deposition -- Crystal Structure of SARS-CoV-2 main protease in complex with Z44592329"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
+<p><a href="datasets/sars-cov2-structures.json"><strong>Download raw dataset in JSON format</strong></a></p>
+</div>
+
+<div id="rmd-source-code">LS0tCnRpdGxlOiAiU0FSUy1Db1YtMiBzdHJ1Y3R1cmVzIgotLS0KCmBgYHtyIHNldHVwLCBpbmNsdWRlPUZBTFNFfQprbml0cjo6b3B0c19jaHVuayRzZXQobWVzc2FnZSA9IEZBTFNFLCB3YXJuaW5nID0gRkFMU0UpCmBgYAoKKipMYXN0IHVwZGF0ZWQgb24gYHIgZGF0ZSgpYC4qKgoKIyMgSG93IHRvIHJlLXVzZSB0aGlzIHdvcmsKCklmIHlvdSB1c2UgdGhlc2UgZmlndXJlcyBpbiB5b3VyIG93biB3b3JrLCBwbGVhc2UgY2l0ZSB0aGlzIHdlYnNpdGU6CjxodHRwczovL2RvaS5vcmcvMTAuNTI4MS96ZW5vZG8uMzQ3MDExOT4KCmBgYHtyIExvYWQgcGFja2FnZXMsIGRvd25sb2FkIGRhdGEgYW5kIHByZXBhcmUgZGF0YXNldH0KIyBMb2FkIHJlcXVpcmVkIHBhY2thZ2VzCmxpYnJhcnkobWFncml0dHIpCmxpYnJhcnkoZHBseXIpCmxpYnJhcnkoanNvbmxpdGUpCmxpYnJhcnkoZm9yY2F0cykKbGlicmFyeShnZ3Bsb3QyKQpsaWJyYXJ5KHBsb3RseSkKbGlicmFyeShoZXJlKQpsaWJyYXJ5KGx1YnJpZGF0ZSkKCiMgV2UgbmVlZCB0d28gcXVlcmllczogb25lIGZvciB1cHBlcmNhc2UgdGl0bGVzLCB0aGUgb3RoZXIgZm9yIGxvd2VyY2FzZSBvbmVzCnBkYl9xdWVyeSA8LSAnaHR0cHM6Ly93d3cuZWJpLmFjLnVrL3BkYmUvc2VhcmNoL3BkYi9zZWxlY3Q/cT10aXRsZToqU0FSUy1Db1YtMiolMjBBTkQlMjBzdGF0dXM6UkVMJmZsPXBkYl9pZCxkZXBvc2l0aW9uX2RhdGUsY2l0YXRpb25feWVhcix0aXRsZSxleHBlcmltZW50YWxfbWV0aG9kLHJlc29sdXRpb24sb3JnYW5pc21fc2NpZW50aWZpY19uYW1lLG1vbGVjdWxlX25hbWUsbW9sZWN1bGVfdHlwZSZyb3dzPTEwMDAwMDAmd3Q9anNvbicKCiMgVGhpcyBpcyBhIGhlbHBlciBwaXBlbGluZSB0byBleHRyYWN0IGRhdGEKZGlnX3VwX2RhdGEgPC0gLiAlPiUKICAgIC4kcmVzcG9uc2UgJT4lCiAgICAuJGRvY3MgJT4lCiAgICBhc190aWJibGUoKQoKIyBRdWVyeSB0aGUgUERCIGFuZCBjbGVhbiB1cCBkYXRhCnBkYl9kYXRhIDwtIHBkYl9xdWVyeSAlPiUgCiAgICBmcm9tSlNPTigpICU+JSAKICAgIGRpZ191cF9kYXRhKCkgJT4lIAogICAgYmluZF9yb3dzKCkgJT4lIAogICAgbXV0YXRlKAogICAgICBleHBlcmltZW50YWxfbWV0aG9kICAgPSBhc19mYWN0b3IoYXMuY2hhcmFjdGVyKGV4cGVyaW1lbnRhbF9tZXRob2QpKSwKICAgICAgZGVwb3NpdGlvbl9kYXRlICAgICAgID0gYXNfZGF0ZSh5bWRfaG1zKGRlcG9zaXRpb25fZGF0ZSkpLAogICAgICBjaXRhdGlvbl95ZWFyICAgICAgICAgPSBhcy5pbnRlZ2VyKGNpdGF0aW9uX3llYXIpLAogICAgICBtb2xlY3VsZV9uYW1lICAgICAgICAgPSBhcy5jaGFyYWN0ZXIobW9sZWN1bGVfbmFtZSksCiAgICAgIG1vbGVjdWxlX3R5cGUgICAgICAgICA9IGFzX2ZhY3Rvcihhcy5jaGFyYWN0ZXIobW9sZWN1bGVfdHlwZSkpCiAgICAgICkgJT4lIAogICAgZGlzdGluY3QocGRiX2lkLCAua2VlcF9hbGwgPSBUUlVFKQpgYGAKCiMjIEFib3V0IHRoaXMgc2VjdGlvbgoKV2l0aCB0aGUgb25nb2luZyBbQ09WSUQtMTkKcGFuZGVtaWNdKGh0dHBzOi8vZW4ud2lraXBlZGlhLm9yZy93aWtpL0NPVklELTE5X3BhbmRlbWljKSwgbmV3IHN0cnVjdHVyZXMgb2YKcHJvdGVpbnMgZnJvbQpbU0FSUy1Db1YtMl0oaHR0cHM6Ly9lbi53aWtpcGVkaWEub3JnL3dpa2kvU2V2ZXJlX2FjdXRlX3Jlc3BpcmF0b3J5X3N5bmRyb21lX2Nvcm9uYXZpcnVzXzIpIGFyZSBkZXBvc2l0ZWQgdG8gdGhlIFBEQiBhdCBhIGZhc3QgcGFjZS4gVGhlIHZpc3VhbGl6YXRpb25zIHByZXNlbnRlZCBoZXJlCndvbid0IGhlbHAgY3VyYiB0aGUgcGFuZGVtaWMgKGFuZCBhcmUgbm90IG1lZGljYWwgYWR2aWNlLCBvYnZpb3VzbHkpLCBidXQgSSBob3BlCnRoZXkgd2lsbCBtYWtlIGN1cmlvdXMgYW5kIGhlbHBsZXNzIG1pbmRzIChsaWtlIG15c2VsZikgZ2V0IGEgZmVlbCBmb3IgdGhlCnJlc2VhcmNoIGVmZm9ydCBjdXJyZW50bHkgYmVpbmcgZGVwbG95ZWQgYWdhaW5zdCBpdC4KClRoZSBmb2xsb3dpbmcgcmVzb3VyY2VzIGFyZSBhIGxvdCBtb3JlIHJlbGV2YW50IGFuZCBhY3Rpb25hYmxlOgoKLSBbQ29yb25hdmlydXMgU3RydWN0dXJhbCBUYXNrIEZvcmNlXShodHRwczovL2luc2lkZWNvcm9uYS5uZXQvKQotIFtQREJlIENPVklELTE5IERhdGEgUG9ydGFsXShodHRwczovL3d3dy5lYmkuYWMudWsvcGRiZS9jb3ZpZC0xOSkKLSBbQ3Jvd2RmaWdodCBDT1ZJRC0xOV0oaHR0cHM6Ly9jcm93ZGZpZ2h0Y292aWQxOS5vcmcvKQoKIyMgU0FSUy1Db1YtMiBzdHJ1Y3R1cmVzIGJ5IGRlcG9zaXRpb24gZGF0ZQoKQWxsIGZpZ3VyZXMgYXJlIGludGVyYWN0aXZlICh5b3UgY2FuIHpvb20gaW4sIGFuZCBob3ZlcmluZyBvdmVyIGVsZW1lbnRzIHdpbGwKc2hvdyBtb3JlIGluZm9ybWF0aW9uKS4KCmBgYHtyIFNBUlMtQ29WLTIgc3RydWN0dXJlcyBieSB5ZWFyfQpzYXJzX2NvdjJfc3RydWN0dXJlc195ZWFyIDwtIHBkYl9kYXRhICU+JSAKICAgIGdncGxvdCgpICsKICAgIGdlb21fYmFyKG1hcHBpbmcgPSBhZXMoeCA9IGRlcG9zaXRpb25fZGF0ZSkpICsKICAgIGdndGl0bGUoIlN0cnVjdHVyZXMgb2YgU0FSUy1Db1YtMiBieSBkZXBvc2l0aW9uIGRhdGUiKSArCiAgICB4bGFiKCJEZXBvc2l0aW9uIGRhdGUiKSArCiAgICB5bGFiKCJOdW1iZXIgb2YgUERCIGVudHJpZXMiKSArCiAgICB0aGVtZV9idygpCmdncGxvdGx5KHNhcnNfY292Ml9zdHJ1Y3R1cmVzX3llYXIpCmBgYAoKVGhlIHR3byBub3RpY2VhYmxlIHNwaWtlcyAoNjggc3RydWN0dXJlcyBkZXBvc2l0ZWQgb24gTWFyY2ggMTV0aCBhbmQgMTMKc3RydWN0dXJlcyBkZXBvc2l0ZWQgb24gQXByaWwgN3RoKSBjb21lIGZyb20gW2EgZnJhZ21lbnQgc2NyZWVuaW5nCmV4cGVyaW1lbnRdKGh0dHBzOi8vd3d3LmRpYW1vbmQuYWMudWsvY292aWQtMTkvZm9yLXNjaWVudGlzdHMvTWFpbi1wcm90ZWFzZS1zdHJ1Y3R1cmUtYW5kLVhDaGVtLmh0bWwpCnBlcmZvcm1lZCBhdCBEaWFtb25kIExpZ2h0IFNvdXJjZS4gQWxsIHRoZXNlIHN0cnVjdHVyZXMgYXJlIHRoZSBzYW1lIHByb3RlaW4KKG1haW4gcHJvdGVhc2UpIGluIGNvbXBsZXggd2l0aCBjYW5kaWRhdGUgbW9sZWN1bGVzIGZvciBkcnVnIGRlc2lnbi4KCmBgYHtyIFNhdmUgU1ZHIGZpbGUgb2YgeWVhciBncmFwaCwgaW5jbHVkZT1GQUxTRX0KIyBTYXZlIGZpZ3VyZSBmb3IgZG93bmxvYWQKaWYgKCFkaXIuZXhpc3RzKGhlcmUoImZpZ3VyZXMiKSkpIHsKICAgIGRpci5jcmVhdGUoaGVyZSgiZmlndXJlcyIpKQp9Cmdnc2F2ZShmaWxlbmFtZSA9ICJzYXJzLWNvdjItc3RydWN0dXJlcy1ieS15ZWFyLnN2ZyIsCiAgICAgICBwbG90ID0gc2Fyc19jb3YyX3N0cnVjdHVyZXNfeWVhciwKICAgICAgIGRldmljZSA9ICJzdmciLAogICAgICAgcGF0aCA9IGhlcmUoImZpZ3VyZXMiKSkKYGBgCgpbKipEb3dubG9hZCBmaWd1cmUgaW4gU1ZHIGZvcm1hdCoqXShmaWd1cmVzL3NhcnMtY292Mi1zdHJ1Y3R1cmVzLWJ5LXllYXIuc3ZnKQoKIyMgU0FSUy1Db1YtMiBzdHJ1Y3R1cmVzIGJ5IGV4cGVyaW1lbnRhbCBtZXRob2QKCmBgYHtyIFNBUlMtQ29WLTIgc3RydWN0dXJlcyBieSBleHBlcmltZW50YWwgbWV0aG9kfQpzYXJzX2NvdjJfc3RydWN0dXJlc19tZXRob2QgPC0gcGRiX2RhdGEgJT4lIAogICAgZ2dwbG90KCkgKwogICAgZ2VvbV9iYXIobWFwcGluZyA9IGFlcyh4ID0gZXhwZXJpbWVudGFsX21ldGhvZCwgZmlsbCA9IGV4cGVyaW1lbnRhbF9tZXRob2QpKSArCiAgICBndWlkZXMoZmlsbCA9IGd1aWRlX2xlZ2VuZCh0aXRsZSA9ICJFeHBlcmltZW50YWwgbWV0aG9kIikpICsKICAgIGdndGl0bGUoIlN0cnVjdHVyZXMgb2YgU0FSUy1Db1YtMiBieSBleHBlcmltZW50YWwgbWV0aG9kIikgKwogICAgeGxhYigiIikgKwogICAgeWxhYigiTnVtYmVyIG9mIFBEQiBlbnRyaWVzIikgKwogICAgdGhlbWVfYncoKQpnZ3Bsb3RseShzYXJzX2NvdjJfc3RydWN0dXJlc19tZXRob2QpCmBgYAoKYGBge3IgU2F2ZSBTVkcgZmlsZSBvZiBtZXRob2QgZ3JhcGgsIGluY2x1ZGU9RkFMU0V9CiMgU2F2ZSBmaWd1cmUgZm9yIGRvd25sb2FkCmlmICghZGlyLmV4aXN0cyhoZXJlKCJmaWd1cmVzIikpKSB7CiAgICBkaXIuY3JlYXRlKGhlcmUoImZpZ3VyZXMiKSkKfQpnZ3NhdmUoZmlsZW5hbWUgPSAic2Fycy1jb3YyLXN0cnVjdHVyZXMtYnktbWV0aG9kLnN2ZyIsCiAgICAgICBwbG90ID0gc2Fyc19jb3YyX3N0cnVjdHVyZXNfbWV0aG9kLAogICAgICAgZGV2aWNlID0gInN2ZyIsCiAgICAgICBwYXRoID0gaGVyZSgiZmlndXJlcyIpKQpgYGAKClsqKkRvd25sb2FkIGZpZ3VyZSBpbiBTVkcgZm9ybWF0KipdKGZpZ3VyZXMvc2Fycy1jb3YyLXN0cnVjdHVyZXMtYnktbWV0aG9kLnN2ZykKCgojIyBEYXRhc2V0CgpUaGUgZ3JhcGhzIHByZXNlbnRlZCBhYm92ZSBhcmUgZGVyaXZlZCBmcm9tIHRoZSBmb2xsb3dpbmcgZGF0YXNldDoKCmBgYHtyIEVudGlyZSBkYXRhc2V0fQojIEZvcm1hdCB0YWJsZSBmb3IgZGlzcGxheQpwZGJfdGFibGUgPC0gcGRiX2RhdGEgJT4lIAogICAgYXJyYW5nZShkZXNjKGNpdGF0aW9uX3llYXIpKSAlPiUgCiAgICBzZWxlY3QoYFBEQiBjb2RlYCA9IHBkYl9pZCwKICAgICAgICAgICBgQ2l0YXRpb24geWVhcmAgPSBjaXRhdGlvbl95ZWFyLAogICAgICAgICAgIGBFeHBlcmltZW50YWwgbWV0aG9kYCA9IGV4cGVyaW1lbnRhbF9tZXRob2QsCiAgICAgICAgICAgVGl0bGUgPSB0aXRsZSkKcGRiX3RhYmxlCmBgYAoKYGBge3IgU2F2ZSBkYXRhc2V0IGFzIEpTT04sIGluY2x1ZGU9RkFMU0V9CiMgU2F2ZSBkYXRhc2V0IGZvciBkb3dubG9hZAppZiAoIWRpci5leGlzdHMoaGVyZSgiZGF0YXNldHMiKSkpIHsKICAgIGRpci5jcmVhdGUoaGVyZSgiZGF0YXNldHMiKSkKfQoKd3JpdGVfanNvbihwZGJfZGF0YSwgaGVyZSgiZGF0YXNldHMiLCAic2Fycy1jb3YyLXN0cnVjdHVyZXMuanNvbiIpKQpgYGAKClsqKkRvd25sb2FkIHJhdyBkYXRhc2V0IGluIEpTT04gZm9ybWF0KipdKGRhdGFzZXRzL3NhcnMtY292Mi1zdHJ1Y3R1cmVzLmpzb24pCg==</div>
+
+
+</div>
+</div>
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+function bootstrapStylePandocTables() {
+  $('tr.header').parent('thead').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
+});
+
+
+</script>
+
+<!-- tabsets -->
+
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+
+$(document).ready(function () {
+  $('.tabset-dropdown > .nav-tabs > li').click(function () {
+    $(this).parent().toggleClass('nav-tabs-open')
+  });
+});
+</script>
+
+<!-- code folding -->
+<script>
+$(document).ready(function () {
+  window.initializeSourceEmbed("sars-cov-2.Rmd");
+  window.initializeCodeFolding("hide" === "show");
+});
+</script>
+
+<script>
+$(document).ready(function ()  {
+
+    // move toc-ignore selectors from section div to header
+    $('div.section.toc-ignore')
+        .removeClass('toc-ignore')
+        .children('h1,h2,h3,h4,h5').addClass('toc-ignore');
+
+    // establish options
+    var options = {
+      selectors: "h1,h2,h3",
+      theme: "bootstrap3",
+      context: '.toc-content',
+      hashGenerator: function (text) {
+        return text.replace(/[.\\/?&!#<>]/g, '').replace(/\s/g, '_').toLowerCase();
+      },
+      ignoreSelector: ".toc-ignore",
+      scrollTo: 0
+    };
+    options.showAndHide = false;
+    options.smoothScroll = true;
+
+    // tocify
+    var toc = $("#TOC").tocify(options).data("toc-tocify");
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>
