@@ -95,7 +95,8 @@ has_binding_factor_one <- function(number_of_protein_chains, title) {
         # number of chains by chance even with binding factors. There is no good
         # way to automatically find these cases, unfortunately
         compass <- str_detect(title, "COMPASS")
-        binding_factor <- compass
+        corest <- str_detect(title, "LSD1/CoREST")
+        binding_factor <- compass || corest
         if (binding_factor) {
             return(TRUE)
         } else {
