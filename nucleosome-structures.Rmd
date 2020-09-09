@@ -72,7 +72,8 @@ non_nucleosome_structures <- c(
     "6qdu",
     "6ne8",
     "1tsu",
-    "1esk"
+    "1esk",
+    "7c4j"
 )
 
 # This is a helper pipeline to extract data
@@ -131,6 +132,8 @@ pdb_data <- pdb_queries %>%
 All figures are interactive (you can zoom in, and hovering over elements will
 show more information).
 
+### Nucleosome structures by year and experimental method
+
 ```{r Nucleosome structures by year}
 nucleosome_structures_year <- pdb_data %>% 
     ggplot() +
@@ -155,6 +158,33 @@ ggsave(filename = "nucleosome-structures-by-year.svg",
 ```
 
 [**Download figure in SVG format**](figures/nucleosome-structures-by-year.svg)
+
+### Nucleosome structures by year and presence of a binding factor
+
+```{r Nucleosome structures by year and binding factor}
+nucleosome_structures_year_binding_factor <- pdb_data %>% 
+    ggplot() +
+    geom_bar(mapping = aes(x = citation_year, fill = has_binding_factor)) +
+    guides(fill = guide_legend(title = "Contains a binding factor")) +
+    ggtitle("Structures of nucleosomes by year") +
+    xlab("Publication year") +
+    ylab("Number of PDB entries") +
+    theme_bw()
+ggplotly(nucleosome_structures_year_binding_factor)
+```
+
+```{r Save SVG file of year and binding factor graph, include=FALSE}
+# Save figure for download
+if (!dir.exists(here("figures"))) {
+    dir.create(here("figures"))
+}
+ggsave(filename = "nucleosome-structures-by-year-binding-factor.svg",
+       plot = nucleosome_structures_year_binding_factor,
+       device = "svg",
+       path = here("figures"))
+```
+
+[**Download figure in SVG format**](figures/nucleosome-structures-by-year-binding-factor.svg)
 
 ## Nucleosome structures by experimental method
 
