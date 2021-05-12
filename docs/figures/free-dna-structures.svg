@@ -35,10 +35,12 @@
 <polyline points='38.16,240.81 498.52,240.81 ' style='stroke-width: 1.07; stroke: #EBEBEB; stroke-linecap: butt;' />
 <polyline points='38.16,167.21 498.52,167.21 ' style='stroke-width: 1.07; stroke: #EBEBEB; stroke-linecap: butt;' />
 <polyline points='38.16,93.62 498.52,93.62 ' style='stroke-width: 1.07; stroke: #EBEBEB; stroke-linecap: butt;' />
-<polyline points='163.72,328.27 163.72,23.34 ' style='stroke-width: 1.07; stroke: #EBEBEB; stroke-linecap: butt;' />
-<polyline points='372.97,328.27 372.97,23.34 ' style='stroke-width: 1.07; stroke: #EBEBEB; stroke-linecap: butt;' />
-<rect x='69.55' y='37.20' width='188.33' height='277.21' style='stroke-width: 1.07; stroke: none; stroke-linecap: square; stroke-linejoin: miter; fill: #595959;' />
-<rect x='278.80' y='125.51' width='188.33' height='188.89' style='stroke-width: 1.07; stroke: none; stroke-linecap: square; stroke-linejoin: miter; fill: #595959;' />
+<polyline points='124.48,328.27 124.48,23.34 ' style='stroke-width: 1.07; stroke: #EBEBEB; stroke-linecap: butt;' />
+<polyline points='268.34,328.27 268.34,23.34 ' style='stroke-width: 1.07; stroke: #EBEBEB; stroke-linecap: butt;' />
+<polyline points='412.20,328.27 412.20,23.34 ' style='stroke-width: 1.07; stroke: #EBEBEB; stroke-linecap: butt;' />
+<rect x='59.74' y='37.20' width='129.48' height='277.21' style='stroke-width: 1.07; stroke: none; stroke-linecap: square; stroke-linejoin: miter; fill: #595959;' />
+<rect x='203.60' y='124.53' width='129.48' height='189.88' style='stroke-width: 1.07; stroke: none; stroke-linecap: square; stroke-linejoin: miter; fill: #595959;' />
+<rect x='347.47' y='313.92' width='129.48' height='0.49' style='stroke-width: 1.07; stroke: none; stroke-linecap: square; stroke-linejoin: miter; fill: #595959;' />
 <rect x='38.16' y='23.34' width='460.36' height='304.93' style='stroke-width: 1.07; stroke: #333333;' />
 </g>
 <g clip-path='url(#cpMC4wMHw1MDQuMDB8MC4wMHwzNjAuMDA=)'>
@@ -50,10 +52,12 @@
 <polyline points='35.42,240.81 38.16,240.81 ' style='stroke-width: 1.07; stroke: #333333; stroke-linecap: butt;' />
 <polyline points='35.42,167.21 38.16,167.21 ' style='stroke-width: 1.07; stroke: #333333; stroke-linecap: butt;' />
 <polyline points='35.42,93.62 38.16,93.62 ' style='stroke-width: 1.07; stroke: #333333; stroke-linecap: butt;' />
-<polyline points='163.72,331.01 163.72,328.27 ' style='stroke-width: 1.07; stroke: #333333; stroke-linecap: butt;' />
-<polyline points='372.97,331.01 372.97,328.27 ' style='stroke-width: 1.07; stroke: #333333; stroke-linecap: butt;' />
-<text x='163.72' y='339.50' text-anchor='middle' style='font-size: 8.80px; fill: #4D4D4D; font-family: Arial;' textLength='61.60px' lengthAdjust='spacingAndGlyphs'>X-ray diffraction</text>
-<text x='372.97' y='339.50' text-anchor='middle' style='font-size: 8.80px; fill: #4D4D4D; font-family: Arial;' textLength='54.27px' lengthAdjust='spacingAndGlyphs'>Solution NMR</text>
+<polyline points='124.48,331.01 124.48,328.27 ' style='stroke-width: 1.07; stroke: #333333; stroke-linecap: butt;' />
+<polyline points='268.34,331.01 268.34,328.27 ' style='stroke-width: 1.07; stroke: #333333; stroke-linecap: butt;' />
+<polyline points='412.20,331.01 412.20,328.27 ' style='stroke-width: 1.07; stroke: #333333; stroke-linecap: butt;' />
+<text x='124.48' y='339.50' text-anchor='middle' style='font-size: 8.80px; fill: #4D4D4D; font-family: Arial;' textLength='61.60px' lengthAdjust='spacingAndGlyphs'>X-ray diffraction</text>
+<text x='268.34' y='339.50' text-anchor='middle' style='font-size: 8.80px; fill: #4D4D4D; font-family: Arial;' textLength='54.27px' lengthAdjust='spacingAndGlyphs'>Solution NMR</text>
+<text x='412.20' y='339.50' text-anchor='middle' style='font-size: 8.80px; fill: #4D4D4D; font-family: Arial;' textLength='79.21px' lengthAdjust='spacingAndGlyphs'>Electron Microscopy</text>
 <text transform='translate(13.37,175.80) rotate(-90)' text-anchor='middle' style='font-size: 11.00px; font-family: Arial;' textLength='113.10px' lengthAdjust='spacingAndGlyphs'>Number of PDB entries</text>
 <text x='38.16' y='14.94' style='font-size: 13.20px; font-family: Arial;' textLength='277.14px' lengthAdjust='spacingAndGlyphs'>Structures of free DNA by experimental method</text>
 </g>
