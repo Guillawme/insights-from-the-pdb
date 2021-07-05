@@ -27,66 +27,59 @@
 </defs>
 <g clip-path='url(#cpMzMuMjd8MzE0LjQ5fDIzLjM0fDI1OS43MA==)'>
 <rect x='33.27' y='23.34' width='281.23' height='236.36' style='stroke-width: 1.07; stroke: none; fill: #FFFFFF;' />
-<polyline points='33.27,209.89 314.49,209.89 ' style='stroke-width: 0.53; stroke: #EBEBEB; stroke-linecap: butt;' />
-<polyline points='33.27,131.75 314.49,131.75 ' style='stroke-width: 0.53; stroke: #EBEBEB; stroke-linecap: butt;' />
-<polyline points='33.27,53.61 314.49,53.61 ' style='stroke-width: 0.53; stroke: #EBEBEB; stroke-linecap: butt;' />
+<polyline points='33.27,211.26 314.49,211.26 ' style='stroke-width: 0.53; stroke: #EBEBEB; stroke-linecap: butt;' />
+<polyline points='33.27,135.86 314.49,135.86 ' style='stroke-width: 0.53; stroke: #EBEBEB; stroke-linecap: butt;' />
+<polyline points='33.27,60.47 314.49,60.47 ' style='stroke-width: 0.53; stroke: #EBEBEB; stroke-linecap: butt;' />
 <polyline points='33.27,248.95 314.49,248.95 ' style='stroke-width: 1.07; stroke: #EBEBEB; stroke-linecap: butt;' />
-<polyline points='33.27,170.82 314.49,170.82 ' style='stroke-width: 1.07; stroke: #EBEBEB; stroke-linecap: butt;' />
-<polyline points='33.27,92.68 314.49,92.68 ' style='stroke-width: 1.07; stroke: #EBEBEB; stroke-linecap: butt;' />
-<polyline points='60.48,259.70 60.48,23.34 ' style='stroke-width: 1.07; stroke: #EBEBEB; stroke-linecap: butt;' />
-<polyline points='105.84,259.70 105.84,23.34 ' style='stroke-width: 1.07; stroke: #EBEBEB; stroke-linecap: butt;' />
-<polyline points='151.20,259.70 151.20,23.34 ' style='stroke-width: 1.07; stroke: #EBEBEB; stroke-linecap: butt;' />
-<polyline points='196.56,259.70 196.56,23.34 ' style='stroke-width: 1.07; stroke: #EBEBEB; stroke-linecap: butt;' />
-<polyline points='241.92,259.70 241.92,23.34 ' style='stroke-width: 1.07; stroke: #EBEBEB; stroke-linecap: butt;' />
-<polyline points='287.28,259.70 287.28,23.34 ' style='stroke-width: 1.07; stroke: #EBEBEB; stroke-linecap: butt;' />
-<rect x='40.07' y='34.08' width='40.82' height='214.87' style='stroke-width: 1.07; stroke: none; stroke-linecap: square; stroke-linejoin: miter; fill: #F8766D;' />
-<rect x='85.43' y='77.05' width='40.82' height='171.90' style='stroke-width: 1.07; stroke: none; stroke-linecap: square; stroke-linejoin: miter; fill: #B79F00;' />
-<rect x='130.79' y='245.05' width='40.82' height='3.91' style='stroke-width: 1.07; stroke: none; stroke-linecap: square; stroke-linejoin: miter; fill: #00BA38;' />
-<rect x='176.15' y='241.14' width='40.82' height='7.81' style='stroke-width: 1.07; stroke: none; stroke-linecap: square; stroke-linejoin: miter; fill: #00BFC4;' />
-<rect x='221.51' y='237.23' width='40.82' height='11.72' style='stroke-width: 1.07; stroke: none; stroke-linecap: square; stroke-linejoin: miter; fill: #619CFF;' />
-<rect x='266.87' y='245.05' width='40.82' height='3.91' style='stroke-width: 1.07; stroke: none; stroke-linecap: square; stroke-linejoin: miter; fill: #F564E3;' />
+<polyline points='33.27,173.56 314.49,173.56 ' style='stroke-width: 1.07; stroke: #EBEBEB; stroke-linecap: butt;' />
+<polyline points='33.27,98.16 314.49,98.16 ' style='stroke-width: 1.07; stroke: #EBEBEB; stroke-linecap: butt;' />
+<polyline points='65.72,259.70 65.72,23.34 ' style='stroke-width: 1.07; stroke: #EBEBEB; stroke-linecap: butt;' />
+<polyline points='119.80,259.70 119.80,23.34 ' style='stroke-width: 1.07; stroke: #EBEBEB; stroke-linecap: butt;' />
+<polyline points='173.88,259.70 173.88,23.34 ' style='stroke-width: 1.07; stroke: #EBEBEB; stroke-linecap: butt;' />
+<polyline points='227.96,259.70 227.96,23.34 ' style='stroke-width: 1.07; stroke: #EBEBEB; stroke-linecap: butt;' />
+<polyline points='282.05,259.70 282.05,23.34 ' style='stroke-width: 1.07; stroke: #EBEBEB; stroke-linecap: butt;' />
+<rect x='41.38' y='34.08' width='48.67' height='214.87' style='stroke-width: 1.07; stroke: none; stroke-linecap: square; stroke-linejoin: miter; fill: #F8766D;' />
+<rect x='95.46' y='64.24' width='48.67' height='184.72' style='stroke-width: 1.07; stroke: none; stroke-linecap: square; stroke-linejoin: miter; fill: #A3A500;' />
+<rect x='149.54' y='241.41' width='48.67' height='7.54' style='stroke-width: 1.07; stroke: none; stroke-linecap: square; stroke-linejoin: miter; fill: #00BF7D;' />
+<rect x='203.63' y='237.65' width='48.67' height='11.31' style='stroke-width: 1.07; stroke: none; stroke-linecap: square; stroke-linejoin: miter; fill: #00B0F6;' />
+<rect x='257.71' y='245.18' width='48.67' height='3.77' style='stroke-width: 1.07; stroke: none; stroke-linecap: square; stroke-linejoin: miter; fill: #E76BF3;' />
 <rect x='33.27' y='23.34' width='281.23' height='236.36' style='stroke-width: 1.07; stroke: #333333;' />
 </g>
 <g clip-path='url(#cpMC4wMHw1MDQuMDB8MC4wMHwzNjAuMDA=)'>
 <text x='28.34' y='252.11' text-anchor='end' style='font-size: 8.80px; fill: #4D4D4D; font-family: Arial;' textLength='4.90px' lengthAdjust='spacingAndGlyphs'>0</text>
-<text x='28.34' y='173.97' text-anchor='end' style='font-size: 8.80px; fill: #4D4D4D; font-family: Arial;' textLength='9.79px' lengthAdjust='spacingAndGlyphs'>20</text>
-<text x='28.34' y='95.84' text-anchor='end' style='font-size: 8.80px; fill: #4D4D4D; font-family: Arial;' textLength='9.79px' lengthAdjust='spacingAndGlyphs'>40</text>
+<text x='28.34' y='176.71' text-anchor='end' style='font-size: 8.80px; fill: #4D4D4D; font-family: Arial;' textLength='9.79px' lengthAdjust='spacingAndGlyphs'>20</text>
+<text x='28.34' y='101.32' text-anchor='end' style='font-size: 8.80px; fill: #4D4D4D; font-family: Arial;' textLength='9.79px' lengthAdjust='spacingAndGlyphs'>40</text>
 <polyline points='30.53,248.95 33.27,248.95 ' style='stroke-width: 1.07; stroke: #333333; stroke-linecap: butt;' />
-<polyline points='30.53,170.82 33.27,170.82 ' style='stroke-width: 1.07; stroke: #333333; stroke-linecap: butt;' />
-<polyline points='30.53,92.68 33.27,92.68 ' style='stroke-width: 1.07; stroke: #333333; stroke-linecap: butt;' />
-<polyline points='60.48,262.44 60.48,259.70 ' style='stroke-width: 1.07; stroke: #333333; stroke-linecap: butt;' />
-<polyline points='105.84,262.44 105.84,259.70 ' style='stroke-width: 1.07; stroke: #333333; stroke-linecap: butt;' />
-<polyline points='151.20,262.44 151.20,259.70 ' style='stroke-width: 1.07; stroke: #333333; stroke-linecap: butt;' />
-<polyline points='196.56,262.44 196.56,259.70 ' style='stroke-width: 1.07; stroke: #333333; stroke-linecap: butt;' />
-<polyline points='241.92,262.44 241.92,259.70 ' style='stroke-width: 1.07; stroke: #333333; stroke-linecap: butt;' />
-<polyline points='287.28,262.44 287.28,259.70 ' style='stroke-width: 1.07; stroke: #333333; stroke-linecap: butt;' />
-<text transform='translate(63.64,270.09) rotate(-30)' text-anchor='end' style='font-size: 8.80px; fill: #4D4D4D; font-family: Arial;' textLength='59.68px' lengthAdjust='spacingAndGlyphs'>Xenopus laevis</text>
-<text transform='translate(109.00,270.09) rotate(-30)' text-anchor='end' style='font-size: 8.80px; fill: #4D4D4D; font-family: Arial;' textLength='56.25px' lengthAdjust='spacingAndGlyphs'>Homo sapiens</text>
-<text transform='translate(154.35,270.09) rotate(-30)' text-anchor='end' style='font-size: 8.80px; fill: #4D4D4D; font-family: Arial;' textLength='139.35px' lengthAdjust='spacingAndGlyphs'>Kluyveromyces lactis NRRL Y-1140</text>
-<text transform='translate(199.71,270.09) rotate(-30)' text-anchor='end' style='font-size: 8.80px; fill: #4D4D4D; font-family: Arial;' textLength='50.36px' lengthAdjust='spacingAndGlyphs'>Gallus gallus</text>
-<text transform='translate(245.07,270.09) rotate(-30)' text-anchor='end' style='font-size: 8.80px; fill: #4D4D4D; font-family: Arial;' textLength='97.83px' lengthAdjust='spacingAndGlyphs'>Drosophila melanogaster</text>
-<text transform='translate(290.43,270.09) rotate(-30)' text-anchor='end' style='font-size: 8.80px; fill: #4D4D4D; font-family: Arial;' textLength='134.01px' lengthAdjust='spacingAndGlyphs'>Saccharomyces cerevisiae S288C</text>
+<polyline points='30.53,173.56 33.27,173.56 ' style='stroke-width: 1.07; stroke: #333333; stroke-linecap: butt;' />
+<polyline points='30.53,98.16 33.27,98.16 ' style='stroke-width: 1.07; stroke: #333333; stroke-linecap: butt;' />
+<polyline points='65.72,262.44 65.72,259.70 ' style='stroke-width: 1.07; stroke: #333333; stroke-linecap: butt;' />
+<polyline points='119.80,262.44 119.80,259.70 ' style='stroke-width: 1.07; stroke: #333333; stroke-linecap: butt;' />
+<polyline points='173.88,262.44 173.88,259.70 ' style='stroke-width: 1.07; stroke: #333333; stroke-linecap: butt;' />
+<polyline points='227.96,262.44 227.96,259.70 ' style='stroke-width: 1.07; stroke: #333333; stroke-linecap: butt;' />
+<polyline points='282.05,262.44 282.05,259.70 ' style='stroke-width: 1.07; stroke: #333333; stroke-linecap: butt;' />
+<text transform='translate(68.87,270.09) rotate(-30)' text-anchor='end' style='font-size: 8.80px; fill: #4D4D4D; font-family: Arial;' textLength='59.68px' lengthAdjust='spacingAndGlyphs'>Xenopus laevis</text>
+<text transform='translate(122.95,270.09) rotate(-30)' text-anchor='end' style='font-size: 8.80px; fill: #4D4D4D; font-family: Arial;' textLength='56.25px' lengthAdjust='spacingAndGlyphs'>Homo sapiens</text>
+<text transform='translate(177.03,270.09) rotate(-30)' text-anchor='end' style='font-size: 8.80px; fill: #4D4D4D; font-family: Arial;' textLength='50.36px' lengthAdjust='spacingAndGlyphs'>Gallus gallus</text>
+<text transform='translate(231.12,270.09) rotate(-30)' text-anchor='end' style='font-size: 8.80px; fill: #4D4D4D; font-family: Arial;' textLength='97.83px' lengthAdjust='spacingAndGlyphs'>Drosophila melanogaster</text>
+<text transform='translate(285.20,270.09) rotate(-30)' text-anchor='end' style='font-size: 8.80px; fill: #4D4D4D; font-family: Arial;' textLength='139.35px' lengthAdjust='spacingAndGlyphs'>Kluyveromyces lactis NRRL Y-1140</text>
 <text transform='translate(13.37,141.52) rotate(-90)' text-anchor='middle' style='font-size: 11.00px; font-family: Arial;' textLength='113.10px' lengthAdjust='spacingAndGlyphs'>Number of PDB entries</text>
-<rect x='325.45' y='76.30' width='173.07' height='130.44' style='stroke-width: 1.07; stroke: none; fill: #FFFFFF;' />
-<text x='330.93' y='90.88' style='font-size: 11.00px; font-family: Arial;' textLength='77.65px' lengthAdjust='spacingAndGlyphs'>Histone species</text>
-<rect x='330.93' y='97.58' width='17.28' height='17.28' style='stroke-width: 1.07; stroke: none; fill: #FFFFFF;' />
-<rect x='331.64' y='98.29' width='15.86' height='15.86' style='stroke-width: 1.07; stroke: none; stroke-linecap: square; stroke-linejoin: miter; fill: #F8766D;' />
-<rect x='330.93' y='114.86' width='17.28' height='17.28' style='stroke-width: 1.07; stroke: none; fill: #FFFFFF;' />
-<rect x='331.64' y='115.57' width='15.86' height='15.86' style='stroke-width: 1.07; stroke: none; stroke-linecap: square; stroke-linejoin: miter; fill: #B79F00;' />
-<rect x='330.93' y='132.14' width='17.28' height='17.28' style='stroke-width: 1.07; stroke: none; fill: #FFFFFF;' />
-<rect x='331.64' y='132.85' width='15.86' height='15.86' style='stroke-width: 1.07; stroke: none; stroke-linecap: square; stroke-linejoin: miter; fill: #00BA38;' />
-<rect x='330.93' y='149.42' width='17.28' height='17.28' style='stroke-width: 1.07; stroke: none; fill: #FFFFFF;' />
-<rect x='331.64' y='150.13' width='15.86' height='15.86' style='stroke-width: 1.07; stroke: none; stroke-linecap: square; stroke-linejoin: miter; fill: #00BFC4;' />
-<rect x='330.93' y='166.70' width='17.28' height='17.28' style='stroke-width: 1.07; stroke: none; fill: #FFFFFF;' />
-<rect x='331.64' y='167.41' width='15.86' height='15.86' style='stroke-width: 1.07; stroke: none; stroke-linecap: square; stroke-linejoin: miter; fill: #619CFF;' />
-<rect x='330.93' y='183.98' width='17.28' height='17.28' style='stroke-width: 1.07; stroke: none; fill: #FFFFFF;' />
-<rect x='331.64' y='184.69' width='15.86' height='15.86' style='stroke-width: 1.07; stroke: none; stroke-linecap: square; stroke-linejoin: miter; fill: #F564E3;' />
-<text x='353.69' y='109.37' style='font-size: 8.80px; font-family: Arial;' textLength='59.68px' lengthAdjust='spacingAndGlyphs'>Xenopus laevis</text>
-<text x='353.69' y='126.65' style='font-size: 8.80px; font-family: Arial;' textLength='56.25px' lengthAdjust='spacingAndGlyphs'>Homo sapiens</text>
-<text x='353.69' y='143.93' style='font-size: 8.80px; font-family: Arial;' textLength='139.35px' lengthAdjust='spacingAndGlyphs'>Kluyveromyces lactis NRRL Y-1140</text>
-<text x='353.69' y='161.21' style='font-size: 8.80px; font-family: Arial;' textLength='50.36px' lengthAdjust='spacingAndGlyphs'>Gallus gallus</text>
-<text x='353.69' y='178.49' style='font-size: 8.80px; font-family: Arial;' textLength='97.83px' lengthAdjust='spacingAndGlyphs'>Drosophila melanogaster</text>
-<text x='353.69' y='195.77' style='font-size: 8.80px; font-family: Arial;' textLength='134.01px' lengthAdjust='spacingAndGlyphs'>Saccharomyces cerevisiae S288C</text>
+<rect x='325.45' y='84.94' width='173.07' height='113.16' style='stroke-width: 1.07; stroke: none; fill: #FFFFFF;' />
+<text x='330.93' y='99.52' style='font-size: 11.00px; font-family: Arial;' textLength='77.65px' lengthAdjust='spacingAndGlyphs'>Histone species</text>
+<rect x='330.93' y='106.22' width='17.28' height='17.28' style='stroke-width: 1.07; stroke: none; fill: #FFFFFF;' />
+<rect x='331.64' y='106.93' width='15.86' height='15.86' style='stroke-width: 1.07; stroke: none; stroke-linecap: square; stroke-linejoin: miter; fill: #F8766D;' />
+<rect x='330.93' y='123.50' width='17.28' height='17.28' style='stroke-width: 1.07; stroke: none; fill: #FFFFFF;' />
+<rect x='331.64' y='124.21' width='15.86' height='15.86' style='stroke-width: 1.07; stroke: none; stroke-linecap: square; stroke-linejoin: miter; fill: #A3A500;' />
+<rect x='330.93' y='140.78' width='17.28' height='17.28' style='stroke-width: 1.07; stroke: none; fill: #FFFFFF;' />
+<rect x='331.64' y='141.49' width='15.86' height='15.86' style='stroke-width: 1.07; stroke: none; stroke-linecap: square; stroke-linejoin: miter; fill: #00BF7D;' />
+<rect x='330.93' y='158.06' width='17.28' height='17.28' style='stroke-width: 1.07; stroke: none; fill: #FFFFFF;' />
+<rect x='331.64' y='158.77' width='15.86' height='15.86' style='stroke-width: 1.07; stroke: none; stroke-linecap: square; stroke-linejoin: miter; fill: #00B0F6;' />
+<rect x='330.93' y='175.34' width='17.28' height='17.28' style='stroke-width: 1.07; stroke: none; fill: #FFFFFF;' />
+<rect x='331.64' y='176.05' width='15.86' height='15.86' style='stroke-width: 1.07; stroke: none; stroke-linecap: square; stroke-linejoin: miter; fill: #E76BF3;' />
+<text x='353.69' y='118.01' style='font-size: 8.80px; font-family: Arial;' textLength='59.68px' lengthAdjust='spacingAndGlyphs'>Xenopus laevis</text>
+<text x='353.69' y='135.29' style='font-size: 8.80px; font-family: Arial;' textLength='56.25px' lengthAdjust='spacingAndGlyphs'>Homo sapiens</text>
+<text x='353.69' y='152.57' style='font-size: 8.80px; font-family: Arial;' textLength='50.36px' lengthAdjust='spacingAndGlyphs'>Gallus gallus</text>
+<text x='353.69' y='169.85' style='font-size: 8.80px; font-family: Arial;' textLength='97.83px' lengthAdjust='spacingAndGlyphs'>Drosophila melanogaster</text>
+<text x='353.69' y='187.13' style='font-size: 8.80px; font-family: Arial;' textLength='139.35px' lengthAdjust='spacingAndGlyphs'>Kluyveromyces lactis NRRL Y-1140</text>
 <text x='33.27' y='14.94' style='font-size: 13.20px; font-family: Arial;' textLength='321.85px' lengthAdjust='spacingAndGlyphs'>Cryo-EM structures of nucleosomes by histone species</text>
 </g>
 </svg>
