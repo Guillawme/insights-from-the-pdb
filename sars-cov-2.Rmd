@@ -80,11 +80,14 @@ sars_cov2_structures_year <- pdb_data %>%
 ggplotly(sars_cov2_structures_year)
 ```
 
-The two noticeable spikes (68 structures deposited on March 15th and 13
-structures deposited on April 7th) come from [a fragment screening
-experiment](https://www.diamond.ac.uk/covid-19/for-scientists/Main-protease-structure-and-XChem.html)
-performed at Diamond Light Source. All these structures are the same protein
-(main protease) in complex with candidate molecules for drug design.
+Noticeable very large numbers of depositions on a same day (for example, 68
+structures deposited on March 15th and 14 structures deposited on April 7th)
+come from large-scale fragment screening experiments performed at Diamond Light
+Source:
+
+- [main protease](https://www.diamond.ac.uk/covid-19/for-scientists/Main-protease-structure-and-XChem.html)
+- [macro domain](https://www.diamond.ac.uk/covid-19/for-scientists/NSP3-macrodomain-structure-and-XChem.html)
+- [helicase](https://www.diamond.ac.uk/covid-19/for-scientists/NSP13-Helicase-Structure-and-XChem.html)
 
 ```{r Save SVG file of year graph, include=FALSE}
 # Save figure for download
