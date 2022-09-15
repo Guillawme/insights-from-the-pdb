@@ -13,7 +13,7 @@
 
 <title>Insights from the PDB</title>
 
-<script src="site_libs/header-attrs-2.11/header-attrs.js"></script>
+<script src="site_libs/header-attrs-2.16/header-attrs.js"></script>
 <script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <link href="site_libs/bootstrap-3.3.5/css/simplex.min.css" rel="stylesheet" />
@@ -50,6 +50,7 @@
 
 
 
+
 <style type="text/css">
 #rmd-source-code {
   display: none;
@@ -80,6 +81,9 @@ button.code-folding-btn:focus {
 }
 summary {
   display: list-item;
+}
+details > summary > p:only-child {
+  display: inline;
 }
 pre code {
   padding: 0;
@@ -137,11 +141,15 @@ $(document).ready(function () {
     href = "index.html";
   var menuAnchor = $('a[href="' + href + '"]');
 
-  // mark it active
-  menuAnchor.tab('show');
-
-  // if it's got a parent navbar menu mark it active as well
-  menuAnchor.closest('li.dropdown').addClass('active');
+  // mark the anchor link active (and if it's in a dropdown, also mark that active)
+  var dropdown = menuAnchor.closest('li.dropdown');
+  if (window.bootstrap) { // Bootstrap 4+
+    menuAnchor.addClass('active');
+    dropdown.find('> .dropdown-toggle').addClass('active');
+  } else { // Bootstrap 3
+    menuAnchor.parent().addClass('active');
+    dropdown.addClass('active');
+  }
 
   // Navbar adjustments
   var navHeight = $(".navbar").first().height() + 15;
@@ -314,7 +322,7 @@ div.tocify {
 <div class="navbar navbar-default  navbar-fixed-top" role="navigation">
   <div class="container">
     <div class="navbar-header">
-      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-bs-toggle="collapse" data-target="#navbar" data-bs-target="#navbar">
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
@@ -351,7 +359,7 @@ div.tocify {
 <div id="header">
 
 <div class="btn-group pull-right float-right">
-<button type="button" class="btn btn-default btn-xs btn-secondary btn-sm dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span>Code</span> <span class="caret"></span></button>
+<button type="button" class="btn btn-default btn-xs btn-secondary btn-sm dropdown-toggle" data-toggle="dropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span>Code</span> <span class="caret"></span></button>
 <ul class="dropdown-menu dropdown-menu-right" style="min-width: 50px;">
 <li><a id="rmd-show-all-code" href="#">Show All Code</a></li>
 <li><a id="rmd-hide-all-code" href="#">Hide All Code</a></li>
@@ -367,18 +375,47 @@ div.tocify {
 </div>
 
 
-<p><a href="https://doi.org/10.5281/zenodo.3470119"><img src="https://zenodo.org/badge/doi/10.5281/zenodo.3470119.svg" alt="DOI badge" /></a></p>
-<p><strong>Last updated on Fri Jan 14 11:29:18 2022.</strong></p>
-<p>The <a href="https://en.wikipedia.org/wiki/Protein_Data_Bank">Protein Data Bank</a> (PDB) is a repository of experimentally determined three-dimensional structures of biological macromolecules (mostly proteins and nucleic acids). The structures it contains are very useful by themselves for answering biological questions, or for asking even more questions. In addition, the associated <em>metadata</em> (structure annotations) can also answer many interesting questions.</p>
-<p>The PDB already provides <a href="https://www.rcsb.org/stats/">statistics on some of its metadata</a>, but these are very general in scope. The <a href="https://www.ebi.ac.uk/pdbe">PDB in Europe</a> (PDBe) provides programmatic access to the database through the <a href="https://www.ebi.ac.uk/pdbe/api/doc/search.html">PDBe API</a>. By collecting appropriate metadata from the database, one can get much finer insight, for example specific to a particular field of structural biology.</p>
-<p>This website presents the results of analyzing metadata from the Protein Data Bank to answer questions I am interested in. Some of these analyses are part of <a href="https://www.gaullier.org/en/categories/insights-from-the-pdb/">a series of posts on my blog</a>; this website consolidates the results in a format that is easier to keep up-to-date and consult. I will add more analyses as I find the need. Each analysis indicates the date when it was last run, and I will try to update the entire site about once a month. If you notice it is out of date, feel free to <a href="about.html#contact">contact me</a> and I will update it.</p>
-<p>You are free to use all figures and code used to generate them, <a href="about.html#permissions">provided you give credit appropriately</a>.</p>
+<p><a href="https://doi.org/10.5281/zenodo.3470119"><img
+src="https://zenodo.org/badge/doi/10.5281/zenodo.3470119.svg"
+alt="DOI badge" /></a></p>
+<p><strong>Last updated on Thu Sep 15 15:11:52 2022.</strong></p>
+<p>The <a href="https://en.wikipedia.org/wiki/Protein_Data_Bank">Protein
+Data Bank</a> (PDB) is a repository of experimentally determined
+three-dimensional structures of biological macromolecules (mostly
+proteins and nucleic acids). The structures it contains are very useful
+by themselves for answering biological questions, or for asking even
+more questions. In addition, the associated <em>metadata</em> (structure
+annotations) can also answer many interesting questions.</p>
+<p>The PDB already provides <a
+href="https://www.rcsb.org/stats/">statistics on some of its
+metadata</a>, but these are very general in scope. The <a
+href="https://www.ebi.ac.uk/pdbe">PDB in Europe</a> (PDBe) provides
+programmatic access to the database through the <a
+href="https://www.ebi.ac.uk/pdbe/api/doc/search.html">PDBe API</a>. By
+collecting appropriate metadata from the database, one can get much
+finer insight, for example specific to a particular field of structural
+biology.</p>
+<p>This website presents the results of analyzing metadata from the
+Protein Data Bank to answer questions I am interested in. Some of these
+analyses are part of <a
+href="https://www.gaullier.org/en/categories/insights-from-the-pdb/">a
+series of posts on my blog</a>; this website consolidates the results in
+a format that is easier to keep up-to-date and consult. I will add more
+analyses as I find the need. Each analysis indicates the date when it
+was last run, and I will try to update the entire site about once a
+month. If you notice it is out of date, feel free to <a
+href="about.html#contact">contact me</a> and I will update it.</p>
+<p>You are free to use all figures and code used to generate them, <a
+href="about.html#permissions">provided you give credit
+appropriately</a>.</p>
 <div id="currently-available-analyses" class="section level2">
 <h2>Currently available analyses</h2>
 <ul>
 <li><a href="nucleosome-structures.html">Nucleosome structures</a></li>
-<li><a href="dna-length-in-protein-dna-complexes.html">DNA length in protein-DNA complexes</a></li>
-<li><a href="free-dna.html">DNA length in structures of free DNA</a></li>
+<li><a href="dna-length-in-protein-dna-complexes.html">DNA length in
+protein-DNA complexes</a></li>
+<li><a href="free-dna.html">DNA length in structures of free
+DNA</a></li>
 </ul>
 </div>
 

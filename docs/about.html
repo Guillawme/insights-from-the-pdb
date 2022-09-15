@@ -13,7 +13,7 @@
 
 <title>About</title>
 
-<script src="site_libs/header-attrs-2.11/header-attrs.js"></script>
+<script src="site_libs/header-attrs-2.16/header-attrs.js"></script>
 <script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <link href="site_libs/bootstrap-3.3.5/css/simplex.min.css" rel="stylesheet" />
@@ -50,6 +50,7 @@
 
 
 
+
 <style type="text/css">
 #rmd-source-code {
   display: none;
@@ -80,6 +81,9 @@ button.code-folding-btn:focus {
 }
 summary {
   display: list-item;
+}
+details > summary > p:only-child {
+  display: inline;
 }
 pre code {
   padding: 0;
@@ -137,11 +141,15 @@ $(document).ready(function () {
     href = "index.html";
   var menuAnchor = $('a[href="' + href + '"]');
 
-  // mark it active
-  menuAnchor.tab('show');
-
-  // if it's got a parent navbar menu mark it active as well
-  menuAnchor.closest('li.dropdown').addClass('active');
+  // mark the anchor link active (and if it's in a dropdown, also mark that active)
+  var dropdown = menuAnchor.closest('li.dropdown');
+  if (window.bootstrap) { // Bootstrap 4+
+    menuAnchor.addClass('active');
+    dropdown.find('> .dropdown-toggle').addClass('active');
+  } else { // Bootstrap 3
+    menuAnchor.parent().addClass('active');
+    dropdown.addClass('active');
+  }
 
   // Navbar adjustments
   var navHeight = $(".navbar").first().height() + 15;
@@ -314,7 +322,7 @@ div.tocify {
 <div class="navbar navbar-default  navbar-fixed-top" role="navigation">
   <div class="container">
     <div class="navbar-header">
-      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-bs-toggle="collapse" data-target="#navbar" data-bs-target="#navbar">
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
@@ -351,7 +359,7 @@ div.tocify {
 <div id="header">
 
 <div class="btn-group pull-right float-right">
-<button type="button" class="btn btn-default btn-xs btn-secondary btn-sm dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span>Code</span> <span class="caret"></span></button>
+<button type="button" class="btn btn-default btn-xs btn-secondary btn-sm dropdown-toggle" data-toggle="dropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span>Code</span> <span class="caret"></span></button>
 <ul class="dropdown-menu dropdown-menu-right" style="min-width: 50px;">
 <li><a id="rmd-show-all-code" href="#">Show All Code</a></li>
 <li><a id="rmd-hide-all-code" href="#">Hide All Code</a></li>
@@ -369,29 +377,59 @@ div.tocify {
 
 <div id="about-the-author" class="section level2">
 <h2>About the author</h2>
-<p>You can learn more about me on <a href="https://www.gaullier.org/en/about/">my personal website</a>.</p>
+<p>You can learn more about me on <a
+href="https://www.gaullier.org/en/about/">my personal website</a>.</p>
 </div>
 <div id="contact" class="section level2">
 <h2>Contact</h2>
-<p>You can contact me <a href="mailto:contact@gaullier.org">by email</a> or <a href="https://twitter.com/Guillawme">on Twitter</a>.</p>
+<p>You can contact me <a href="mailto:contact@gaullier.org">by email</a>
+or <a href="https://twitter.com/Guillawme">on Twitter</a>.</p>
 </div>
 <div id="permissions" class="section level2">
 <h2>Permissions</h2>
 <div id="figures" class="section level3">
 <h3>Figures</h3>
-<p>All figures on this website are released under a <a href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International (CC BY 4.0) license</a>. You are welcome to use them in your own work, including with modifications, provided that you give credit to this original work.</p>
-<p>For figures that I made for an article published in a regular journal, giving credit means citing the corresponding article. On this website, I always indicate the full reference to the article a figure appeared in.</p>
-<p>For figures that I have not published in any article at the time you use them, giving credit means citing this website directly, which is citeable thanks to <a href="https://zenodo.org/">Zenodo</a>. The website’s DOI is: <a href="https://doi.org/10.5281/zenodo.3470119" class="uri">https://doi.org/10.5281/zenodo.3470119</a>.</p>
+<p>All figures on this website are released under a <a
+href="https://creativecommons.org/licenses/by/4.0/">Creative Commons
+Attribution 4.0 International (CC BY 4.0) license</a>. You are welcome
+to use them in your own work, including with modifications, provided
+that you give credit to this original work.</p>
+<p>For figures that I made for an article published in a regular
+journal, giving credit means citing the corresponding article. On this
+website, I always indicate the full reference to the article a figure
+appeared in.</p>
+<p>For figures that I have not published in any article at the time you
+use them, giving credit means citing this website directly, which is
+citeable thanks to <a href="https://zenodo.org/">Zenodo</a>. The
+website’s DOI is: <a href="https://doi.org/10.5281/zenodo.3470119"
+class="uri">https://doi.org/10.5281/zenodo.3470119</a>.</p>
 </div>
 <div id="code" class="section level3">
 <h3>Code</h3>
-<p>All code on this website is released under the <a href="https://choosealicense.com/licenses/mit">MIT license</a>. This means you can do pretty much whatever you want with it, at your own risk, and provided that you give credit to the original if you redistribute it:</p>
+<p>All code on this website is released under the <a
+href="https://choosealicense.com/licenses/mit">MIT license</a>. This
+means you can do pretty much whatever you want with it, at your own
+risk, and provided that you give credit to the original if you
+redistribute it:</p>
 <blockquote>
 <p>MIT License</p>
 <p>Copyright (c) 2019 Guillaume Gaullier</p>
-<p>Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the “Software”), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:</p>
-<p>The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.</p>
-<p>THE SOFTWARE IS PROVIDED “AS IS”, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.</p>
+<p>Permission is hereby granted, free of charge, to any person obtaining
+a copy of this software and associated documentation files (the
+“Software”), to deal in the Software without restriction, including
+without limitation the rights to use, copy, modify, merge, publish,
+distribute, sublicense, and/or sell copies of the Software, and to
+permit persons to whom the Software is furnished to do so, subject to
+the following conditions:</p>
+<p>The above copyright notice and this permission notice shall be
+included in all copies or substantial portions of the Software.</p>
+<p>THE SOFTWARE IS PROVIDED “AS IS”, WITHOUT WARRANTY OF ANY KIND,
+EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
+IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY
+CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT,
+TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
+SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.</p>
 </blockquote>
 </div>
 </div>
